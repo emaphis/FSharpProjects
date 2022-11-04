@@ -1,4 +1,9 @@
 // Chapter 01 - Getting started
+// F# notions of values, expressions, types and declarations, including recursive
+// function declarations.
+// The main concepts needed to explain the meaning of these notions are: integers and
+// floating-point numbers, bindings and environments, and step by step evaluation of expressions.
+
 
 // 1.1 Values, types, identifiers and declarations
 
@@ -52,3 +57,34 @@ let (x,y) = a
 let rec power = function
     | (x,0)  -> 1.0
     | (x,n)  -> x * power(x,n-1)
+
+
+// 1.6 Types and type checking
+
+// 1.7 Bindings and environments
+
+let a1 = 3
+
+let b2 = 7.0
+
+let c2 = (2, 8)
+
+let area r = System.Math.PI * r * r
+
+// at this point the environment contains:
+
+//        | "basis library"
+//        | a     => 3
+//        | b     => 7.0 
+// env2 = | c     => (2,8)
+//        | area  => "The area function"
+
+
+// 1.8 Euclid's algorithm
+
+let rec gcd = function
+    | (0,n) -> n
+    | (m,n) -> gcd(n % m,m)
+
+
+// 1.9 Evaluations with environments
