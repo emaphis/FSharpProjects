@@ -18,14 +18,9 @@ f 4
 4 + 3 + 2 + 1 + 0
 10
 
-55 = f 10
-
-let rec fold (f: 'a -> 'b -> 'a) (initialValue: 'a) (li: 'b list) : 'a =
-    match li with
-        | [] -> initialValue
-        | x::xs -> fold f (f initialValue x) xs
-
-let rec foldBack (f: 'a -> 'b -> 'b) (li: 'a list) (initial: 'b) : 'b =
-    match li with
-        | [] -> initial
-        | x::xs -> f x (foldBack f xs initial)
+// testing
+printf "%b\n" (1 = f 1)
+printf "%b\n" (3 = f 2)
+printf "%b\n" (6 = f 3)
+printf "%b\n" (10 = f 4)
+printf "%b\n" (55 = f 10)
