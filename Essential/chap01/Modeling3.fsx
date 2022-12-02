@@ -1,21 +1,9 @@
 // Going further - make Elibility a domain concept
 
-type RegisteredCustomer = {
-    Id : string
-}
-
-type UnregisteredCustomer = {
-    Id : string
-}
-
-// Disctriminated union
 type Customer =
-    | Eligible of RegisteredCustomer
-    | Registered of RegisteredCustomer
-    | Guest of UnregisteredCustomer
-
-
-
+    | Eligible of Id : string
+    | Registered of Id : string
+    | Guest of Id : string
 
 let calculateTotal customer spend =
     let discount =
@@ -25,10 +13,10 @@ let calculateTotal customer spend =
     spend - discount
 
 
-let john = Eligible { Id = "John" }
-let mary = Eligible { Id = "Mary"; }
-let richard = Registered { Id = "Richard" }
-let sarah = Guest { Id = "Sarah" }
+let john = Eligible "John"
+let mary = Eligible "Mary"
+let richard = Registered "Richard"
+let sarah = Guest "Sarah"
 
 let assertJohn = (calculateTotal john 100.0M = 90.0M)
 let assertMary = (calculateTotal mary 99.0M = 99.0M)
