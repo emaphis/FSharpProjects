@@ -124,7 +124,7 @@ let calculate6 n =
     [(3, "Fizz"); (5, "Buzz"); (7, "Bazz")]
     |> List.map (fun (divisor, result) -> if n % divisor = 0 then result else "")
     |> List.reduce (+) // (+) is a shortcut for (fun acc v -> acc + v)
-    |> fun input -> if input = "" then string n else input   
+    |> fun input -> if input = "" then string n else input
 
 [1..15] |> List.map calculate6
 
@@ -135,7 +135,7 @@ let calculate7 mapping n =
     |> List.reduce (+)
     |> fun input -> if input = "" then string n else input
 
-[1..15] |> List.map (calculate7 [(3, "Fizz"); (5, "Buzz")]) 
+[1..15] |> List.map (calculate7 [(3, "Fizz"); (5, "Buzz")])
 
 
 // Leap years
@@ -212,9 +212,7 @@ let shorPassword = setPassword "sh0rt"
 let goodPassword = setPassword "passw0rd"
 
 
-
 // Using Active Patterns in a Practical Example
-
 
 /// Type to represent the score
 type Score = int * int
@@ -250,7 +248,7 @@ let goalsScore (expected:Score) (actual:Score) =
 
 /// calculate the total points for each game:
 let calculatePoints (expected:Score) (actual:Score) =
-    let pointsForCorrectScore = 
+    let pointsForCorrectScore =
         match (expected, actual) with
         | CorrectScore -> 300
         | _ -> 0
