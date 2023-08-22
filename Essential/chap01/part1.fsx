@@ -1,30 +1,7 @@
-(*
-Feature: Applying a discount
-Scenario: Eligible Registered Customers get 10% discount when they
-          spend £100 or more
+// Gettign Started
 
-Given the following Registered Customers
-|Customer Id|Is Eligible|
-|John       |true       |
-|Mary       |true       |
-|Richard    |false      |
 
-When [Customer Id] spends [Spend]
-Then their order total will be [Total]
-
-Examples:
-|Customer Id|   Spend|   Total|
-|Mary       |   99.00|   99.00|
-|John       |  100.00|   90.00|
-|Richard    |  100.00|  100.00|
-|Sarah      |  100.00|  100.00|
-
-Notes:
-Sarah is not a Registered Customer
-Only Registered Customers can be Eligible
-*)
-
-// GettignStarted
+// See model.txt ...
 
 // Record type
 type Customer = {
@@ -42,12 +19,13 @@ let calculateTotal customer spend =
         else 0.0M
     spend - discount
  
-
+// Create Customers from the specification
 let john = { Id = "John"; IsEligible = true; IsRegistered = true }
 let mary = { Id = "Mary"; IsEligible = true; IsRegistered = true }
 let richard = { Id = "Richard"; IsEligible = false; IsRegistered = true }
 let sarah = { Id = "Sarah"; IsEligible = false; IsRegistered = false }
- 
+
+// Informal assertions as tests - should all evaluate to true
 let assertJohn = (calculateTotal john 100.0M = 90.0M)
 let assertMary = (calculateTotal mary 99.0M = 99.0M)
 let assertRichard = (calculateTotal richard 100.0M = 100.0M)
