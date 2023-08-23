@@ -8,7 +8,6 @@ type Customer = {
 }
 
 
-
 // Customer -> (Customer * decimal)
 let getPurchases customer =
     let purchases = if customer.Id % 2 = 0 then 120M else 80M
