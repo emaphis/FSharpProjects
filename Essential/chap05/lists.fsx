@@ -12,31 +12,37 @@
 
 // Core Functionality
 
-// empty
+// Create an empty list
 let items1 = []
 
-// list of 5 items
+// A list of 5 items
 let items2 = [2;5;3;1;4]
 
+// A list of ordered integers
 let items3 = [1..5]
 
-// List Comprehension
+// Using a list Comprehension
 let items4 = [
     for x in 1..5 do
         yield x
 ]
 
+// F# 5, we have been able to drop the need for the yield keyword in most cases.
+// We can also define it in one line:
 let items5 = [ for x in 1..5 do x ]
 
-// (::)
-// head :: tail
+// (::) - head :: tail
+// Add an item to a list, we use the cons operator (::)
 let extendedItems = 6::items5
 
-// pattern match on list
+
+// A non-empty list is made up of a single item called the head and a list of
+// items called the tail which could be an empty list []. We can pattern match
+// on a list to show this:
 let readList items =
     match items with
     | []         -> "Empty List"
-    | [head]     -> $"Head: {head}"
+    | [head]     -> $"Head: {head}"  // list containing one item.
     | head::tail -> sprintf "Head: %A and Tail %A" head tail
 
 
@@ -45,6 +51,7 @@ let multipleList = readList [1;2;3;4;5]
 let singleItemList = readList [1]
 
 
+// If we remove the pattern match for the single item list, the code still works:
 let readList2 items =
     match items with
     | []         -> "Empty List"
@@ -64,9 +71,11 @@ let jointed = list1 @ list2
 let joinedEmpty = list1 @ emptyList1
 let emptyJoined = emptyList1 @ list1
 
+// use the List.concat function to do the same job as the @ operator:
 let joined1 = List.concat [list1; list2]
 
-// filter a list using a predicate function with the signature a -> bool and the List.filter
+// filter a list using a predicate function with the signature a -> bool
+// and the List.filter
 let myList = [1..9]
 
 let getEvens items =
@@ -75,20 +84,20 @@ let getEvens items =
 
 let evens = getEvens myList
 
-// now sum
+// Add up the items in a list using the List.sum function
 let sum items =
     items |> List.sum
 
 let mySum = sum myList
 
-// perform an operation on each item in a list
+// perform an operation on each item in a list List.map.
 let triple items =
     items
     |> List.map (fun x -> x * 3)
 
 let myTripples = triple [1..5]
 
-// no new list
+// If we don't want to return a new list, we use the List.iter function:
 let print items =
     items
     |> List.iter (fun x -> (printfn "My value is %i" x))
@@ -96,9 +105,13 @@ let print items =
 print myList
 
 
-// sum total price
+// a more complicated example using List.map that changes the structure of the 
+// output list.
+// We will use a list of tuples (int * decimal) which might represent quantity and unit price.
 let items6 = [(1,0.25M);(5,0.25M);(1,2.25M);(1,125M);(7,10.9M)]
 
+// Sum total price using List.map to convert the list ot a list of integers
+// then sum for a total using List.sum
 let sum1 items =
     items
     |> List.map (fun (q, p) -> decimal q * p)
@@ -106,44 +119,61 @@ let sum1 items =
 
 let listSum1 = sum1 items6
 
+// a more complicated example using List.map that changes the structure of the
+//  output list. We will use a list of tuples (int * decimal) which might represent quantity and unit price.
 let sum2 items =
     items
     |> List.sumBy (fun (q, p) -> decimal q * p)
 
 let listSum2 = sum2 items6
 
+// should be true
 let checkSum = listSum1 = listSum2
 
 
-// Folding
+// Folding for agregation tasks
+// folder -> initial value -> input list -> output value
+// ('a -> 'b -> 'a) -> 'a -> 'b list -> 'a
 
+// sum the numbers from one to ten:
 [1..10]
 |> List.fold (fun acc v -> acc + v) 0
 
+// The same.
 [1..10]
-|> List.fold (+) 0
+|> List.fold ( + ) 0
 
+// The product of [1..10] using List.fold would be:
 [1..10]
 |> List.fold (fun acc v -> acc * v) 1
 
+// The same
 [1..10]
-|> List.fold (*) 1
+|> List.fold ( * ) 1
 
-// back to total price example
-
+// back to total price example using List.fold:
 let getTotal items =
     items
     |> List.fold (fun acc (q, p) -> acc + (decimal q * p)) 0M
 
 let total1 = getTotal items6
 
+// An alternative style is to use another of the forward-pipe operators, (||>).
+// This version supports a pair tupled of inputs:
+let getTotal1 items =
+    (0M, items) ||> List.fold (fun acc (q, p) -> acc + decimal q * p)
+
+let total2 = getTotal1 items6
+
 
 // Grouping Data and Uniqueness
 
+// use the List.groupBy function to return a tuple for each distinct value:
 let myList2 = [1;2;3;4;5;7;6;5;4;3]
 
 let gbResult = myList2 |> List.groupBy (fun x -> x)
 
+// Get the list of unique items from the result list, we can use the List.map function:
 let unique items =
     items
     |> List.groupBy id
@@ -151,9 +181,10 @@ let unique items =
 
 let unResult = unique myList2
 
+// The function called List.distinct that will do the same
 let distinct = myList2 |> List.distinct
 
-// using Set
+// using Set to find distinct
 let uniqueSet items =
     items
     |> Set.ofList
