@@ -13,7 +13,7 @@ type Customer = {
 
 type DataReader = string -> Result<string seq,exn>
 
-
+/// Load data from cvs file
 let readFile : DataReader =
     fun path ->
         try 
@@ -22,7 +22,7 @@ let readFile : DataReader =
         with
         | ex -> Error ex
 
-
+/// Parse a line of delimited text representing a Customer then return a Customer
 let parseLine (line: string) : Customer option =
     match line.Split('|') with
     | [| customerId; email; eligible; registered; dateRegistered; discount |] ->
@@ -36,14 +36,14 @@ let parseLine (line: string) : Customer option =
         }
     | _ -> None
 
-
+// parses the input data, and returns a seq<Customer>
 let parse (data: string seq) =
     data
     |> Seq.skip 1  // ignore the header row
     |> Seq.map parseLine
     |> Seq.choose id   // ignore Nane and unwratpe Some
 
-
+/// parses the input data, and returns a seq<Customer>
 let output data =
     data
     |> Seq.iter (fun x -> printfn "%A" x)
