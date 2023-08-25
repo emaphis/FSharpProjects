@@ -39,9 +39,8 @@ let parseLine (line: string) : Customer option =
 // parses the input data, and returns a seq<Customer>
 let parse (data: string seq) =
     data
-    |> Seq.skip 1  // ignore the header row
-    |> Seq.map parseLine
-    |> Seq.choose id   // ignore Nane and unwratpe Some
+    |> Seq.skip 1
+    |> Seq.choose parseLine
 
 /// parses the input data, and returns a seq<Customer>
 let output data =
