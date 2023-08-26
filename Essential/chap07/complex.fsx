@@ -36,5 +36,3 @@ let c = Complex (3.0, 4.0)
 addViaRect c c
 
 mulViaRect c c
-
-
