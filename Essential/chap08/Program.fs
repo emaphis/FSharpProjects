@@ -21,27 +21,22 @@ type ValidatedCustomer =
       DateRegistered: DateTime option
       Discount: decimal option }
 
-type DataReader = string -> Result<string seq, exn>
-
 type ValidationError =
     | MissingData of name: string
     | InvalidData of name: string * value: string
 
-let create customerId email isEligible isRegistered dateRegistered discount =
-    { CustomerId = customerId
-      Email = email
-      IsEligible = isEligible
-      IsRegistered = isRegistered
-      DateRegistered = dateRegistered
-      Discount = discount }
+type FileReader = string -> Result<string seq, exn>
 
-let readFile: DataReader =
+
+/// Load data from cvs file
+let readFile: FileReader =
     fun path ->
         try
             File.ReadLines(path) |> Ok
         with
         | ex -> Error ex
 
+/// Parse a line then return a Customer
 let parseLine (line: string) : Customer option =
     match line.Split('|') with
     | [| customerId; email; eligible; registered; dateRegistered; discount |] ->
@@ -55,13 +50,10 @@ let parseLine (line: string) : Customer option =
     | _ -> None
 
 
-let output = Seq.iter (printfn "%A")
-
 // Validation Active Patterns
 
 let (|ParseRegex|_|) regex str =
     let m = Regex(regex).Match(str)
-
     if m.Success then
         Some(List.tail [ for x in m.Groups -> x.Value ])
     else
@@ -92,7 +84,8 @@ let (|IsValidDate|_|) (input: string) =
     let success, value = DateTime.TryParse input
     if success then Some value else None
 
-// Validation functions
+// Validate functions using our active patterns and the new ValidationError
+// discriminated union type
 
 let validateCustomerId customerId =
     if customerId <> "" then
@@ -132,6 +125,19 @@ let validateDiscount discount =
     | IsDecimal value -> Ok(Some value)
     | _ -> Error <| InvalidData("Discount", discount)
 
+/// Create a ValidatedCustomer
+let create customerId email isEligible isRegistered dateRegistered discount =
+    { CustomerId = customerId
+      Email = email
+      IsEligible = isEligible
+      IsRegistered = isRegistered
+      DateRegistered = dateRegistered
+      Discount = discount }
+
+
+// Use Applicatives that were introduced in F# 5.
+
+/// Validate the data and return a Customer
 let validate (input: Customer) : Result<ValidatedCustomer, ValidationError list> =
     // This is just an attempt at Haskell's DO notation 😎
     validation {
@@ -168,13 +174,16 @@ let validate (input: Customer) : Result<ValidatedCustomer, ValidationError list>
         return create customerId email isEligible isRegistered dateRegistered discount
     }
 
+// parses the input data, and returns a seq<Customer or ValidationError> 
 let parse =
     Seq.skip 1
-    >> Seq.map parseLine
-    >> Seq.choose id // == filterMap
+    >> Seq.choose parseLine// == filterMap
     >> Seq.map validate
 
-let import (dataReader: DataReader) path =
+/// Prints a list of Customers
+let output = Seq.iter (printfn "%A")
+
+let import (dataReader: FileReader) path =
     match path |> dataReader with
     | Ok data -> data |> parse |> output
     | Error ex -> printfn "Error: %A" ex.Message
