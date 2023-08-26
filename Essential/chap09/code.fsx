@@ -13,8 +13,8 @@ type UnregisteredCustomer = {
 type ValidationError =
     | InputOutOfRange of string
 
-
-// Single-Case Disctrimiated Union
+/// Type to represent money spend
+/// Single-Case Discriminated Union
 type Spend = private Spend of decimal
 
 module Spend =
@@ -30,6 +30,7 @@ module Spend =
 type Total = decimal
 type DiscountPercentage = decimal
 
+/// Type to represent a Customer
 type Customer =
     | Eligible of RegisteredCustomer
     | Registered of RegisteredCustomer
