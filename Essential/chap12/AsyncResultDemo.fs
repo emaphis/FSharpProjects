@@ -1,4 +1,8 @@
-﻿namespace ComputationExpression
+﻿// 12 - Computation Expressions
+
+// Compound Computation Expressions
+
+namespace ComputationExpression
 
 module AsyncResultDemo =
 
@@ -29,6 +33,9 @@ module AsyncResultDemo =
         Password : string
         Status : UserStatus
     }
+
+
+    // Literals to create test data
 
     [<Literal>]
     let ValidPassword = "password"

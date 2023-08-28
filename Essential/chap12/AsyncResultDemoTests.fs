@@ -1,4 +1,8 @@
-﻿namespace ComputationExpression
+﻿// 12 - Computation Expressions
+
+// Compound Computation Expressions
+
+namespace ComputationExpression
 
 module AsyncResultDemoTests =
 
@@ -19,6 +23,9 @@ module AsyncResultDemoTests =
 
     let runWithValidPassword (username: string) =
         login username ValidPassword |> Async.RunSynchronously
+
+
+    // The tests
 
     let success =
         let result = runWithValidPassword ValidUser

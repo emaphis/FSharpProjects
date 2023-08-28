@@ -1,4 +1,7 @@
-﻿namespace ComputationExpression
+﻿// 12 - Computation Expressions
+
+// The Result Computation Expression
+namespace ComputationExpression
 
 module ResultDemo =
 
@@ -33,6 +36,14 @@ module ResultDemo =
         with
         | ex -> Error ex
 
+    // using Result functions
+    let upgradeCustomer' customer =
+        customer
+        |> getPurchases
+        |> Result.map tryPromoteToVip
+        |> Result.bind increaseCreditIfVip
+
+    // using a result computation expression
     let upgradeCustomer customer =
         result {
             let! purchases = getPurchases customer

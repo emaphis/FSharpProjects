@@ -1,4 +1,5 @@
-﻿
+﻿// 12 - Computation Expressions
+
 open System.IO
 open ComputationExpression.OptionDemo
 open ComputationExpression.AsyncDemo
@@ -22,9 +23,12 @@ let proc3() =
     printfn "IsBanned: %b" isBanned
     printfn "HasBadLuck: %b" hasBadLuck
 
+
 [<EntryPoint>]
 let main argv =
     proc1()
+    printfn "------------"
     proc2()
+    printfn "------------"
     proc3()
     0

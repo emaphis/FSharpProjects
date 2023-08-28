@@ -30,6 +30,20 @@ module OptionDemo =
 
     // the formula is: f x y = ((x / y) * x) / y
 
+    //let calcuate' x y =
+    //    divide x y
+    //    |> fun result ->
+    //        match result with
+    //        | Some v -> multiply v x |> Some
+    //        | None -> None
+    //    |> fun result ->
+    //            match result with
+    //            | Some t ->  divide t y
+    //            | None -> None
+
+
+    // Simplified using Option functions
+
     //let calulate x y =
     //    divide x y
     //    |> Option.map (fun v -> multiply v x)
