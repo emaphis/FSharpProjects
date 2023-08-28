@@ -4,19 +4,20 @@
 
 open System.IO
 
+/// A simple generic hierarchical discriminated union
 type Tree<'T> =
     | Branch of 'T * Tree<'T> seq
     | Leaf of 'T
 
-/// defines a waypoint on our route
+//// A record type that defines a waypoint on our route. It will include data on
+/// where we are, how we got there, and how far we have travelled to get here.
 type Waypoint = { Location:string; Route:string list; TotalDistance:int }
 
-/// data that we load from the CSV file
+/// A record type fo hold data that we load from the CSV file
 type Connection = { Start:string; Finish:string; Distance:int }
 
 
-/// takes a file path and returns the loaded data
-// string -> Map<string, Connection list>
+/// A function that takes a file path and returns the loaded data
 let loadData path =
     path
     |> File.ReadLines
@@ -33,8 +34,9 @@ let loadData path =
     |> Map.ofList
 
 
-/// determines where we can go to next that we haven't already been to:
-// Map<string, Connection list> -> Waypoint -> Waypoint list
+// Find Possible Routes
+
+/// A function that determines where we can go to next that we haven't already been to:
 let getUnvisited connections current =
     connections
     |> List.filter (fun cn -> current.Route |> List.exists (fun loc -> loc = cn.Finish) |> not)
@@ -44,18 +46,16 @@ let getUnvisited connections current =
         TotalDistance = cn.Distance + current.TotalDistance })
 
 
-/// convert our tree structure to a list of Waypoints, so that we can
+/// Convert our tree structure to a list of Waypoints, so that we can
 /// find the shortest route:
-// Tree<Waypoint> -> List<Waypoint>
 let rec treeToList tree =
     match tree with 
     | Leaf x -> [x]
     | Branch (_, xs) -> List.collect treeToList (xs |> Seq.toList)
 
 
-/// generate our Tree structure that defines all of the possible routes between
+/// Generate our Tree structure that defines all of the possible routes between
 /// the start and the finish:
-// string -> string -> Map<string, Connection list> -> Waypoint list
 let findPossibleRoutes start finish (routeMap:Map<string, Connection list>) =
     let rec loop current =
         let nextRoutes = getUnvisited routeMap[current.Location] current
@@ -68,23 +68,22 @@ let findPossibleRoutes start finish (routeMap:Map<string, Connection list>) =
     |> List.filter (fun wp -> wp.Location = finish)
 
 
-/// determine the shortest route from the output:
-// Waypoint list -> (string list * int)
+// Select Shortest Route
+
+/// Determine the shortest route from the output:
 let selectShortestRoute routes =
     routes 
     |> List.minBy (fun wp -> wp.TotalDistance)
     |> fun wp -> wp.Location :: wp.Route |> List.rev, wp.TotalDistance
 
 
-/// run the program
-// string -> string -> unit
+/// Run the program - Call loadData with a start and finish location, 
 let run start finish = 
     Path.Combine(__SOURCE_DIRECTORY__, "resources", "data.csv") 
     |> loadData
     |> findPossibleRoutes start finish 
     |> selectShortestRoute
     |> printfn "%A"
-
 
 let result = run "Cogburg" "Leverstorm"
 
