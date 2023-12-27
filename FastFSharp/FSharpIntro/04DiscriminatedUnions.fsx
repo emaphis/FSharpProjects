@@ -1,5 +1,5 @@
-
 // Intro to Discriminated Unions
+
 type Chicken =
     {
         Name : string
@@ -23,4 +23,12 @@ let t1 : Turkey = { Name = "Gobble"; Size = 20.0 }
 let b2 = Bird.Turkey t1
 
 
+let myBirdFunction (b: Bird) =
+    match b with
+    | Chicken c  ->
+        printfn $"Chicken: {c.Name}"
+    | Turkey t ->
+        printfn $"Turkey: {t.Name}"
 
+myBirdFunction b1
+myBirdFunction b2

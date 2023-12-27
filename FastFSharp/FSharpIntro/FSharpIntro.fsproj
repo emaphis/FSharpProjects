@@ -10,6 +10,7 @@
     <None Include="02Records.fsx" />
     <None Include="03Structs.fsx" />
     <None Include="04DiscriminatedUnions.fsx" />
+    <None Include="05Tuples.fsx" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
