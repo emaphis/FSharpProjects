@@ -11,6 +11,8 @@
     <None Include="03Structs.fsx" />
     <None Include="04DiscriminatedUnions.fsx" />
     <None Include="05Tuples.fsx" />
+    <None Include="06Functions.fsx" />
+    <None Include="07Functions.fsx" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
