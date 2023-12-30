@@ -13,6 +13,8 @@
     <None Include="05Tuples.fsx" />
     <None Include="06Functions.fsx" />
     <None Include="07Functions.fsx" />
+    <None Include="08Functions.fsx" />
+    <None Include="09Functions.fsx" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
