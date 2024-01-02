@@ -17,6 +17,8 @@
     <None Include="09Functions.fsx" />
     <None Include="10Modules.fsx" />
     <None Include="11Lists.fsx" />
+    <None Include="12Arrays.fsx" />
+    <None Include="13UnitsOfMeasure.fsx" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
