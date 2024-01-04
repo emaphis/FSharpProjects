@@ -19,6 +19,9 @@
     <None Include="11Lists.fsx" />
     <None Include="12Arrays.fsx" />
     <None Include="13UnitsOfMeasure.fsx" />
+    <None Include="14Loops.fsx" />
+    <None Include="15Comprehensions.fsx" />
+    <None Include"16Sequences.fsx" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
