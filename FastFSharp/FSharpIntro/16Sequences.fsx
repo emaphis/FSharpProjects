@@ -1,4 +1,4 @@
-// Intor to Sequences
+// Intro to Sequences
 
 let a = seq {
     1
@@ -23,8 +23,49 @@ let d = seq {
         i, j
 }
 
-let foo =
-    [ 1 .. 5 ]
-    |> List.map (fun x -> x * x)
+for tup in d do
+    printfn $"{tup}"
 
-    
+
+let e = seq {
+    for i in 1..3 do
+        yield! seq { 1; 2; 3 }
+}
+
+for i in e do
+    printfn $"{i}"
+
+let f = seq {
+    for i  in 1..3  do
+        yield! [ 1; 2; 3]
+}
+
+for i in f do
+    printfn $"{i}"
+
+
+let f2 = seq {
+    for i  in 1..3  do
+        yield! [| 1; 2; 3 |]
+}
+
+for i in f2 do
+    printfn $"{i}"
+
+
+let g = seq {
+    while true do
+        1
+}
+
+for i in Seq.take 10 g do
+    printfn $"{i}"
+
+
+let h = seq {
+    while true do
+        yield! [1; 2; 3]
+}
+
+for i in Seq.take 10 h do
+    printfn $"{i}"

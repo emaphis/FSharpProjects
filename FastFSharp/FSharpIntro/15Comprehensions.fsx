@@ -3,6 +3,7 @@
 //let a = [1..5]
 //let b = [2..2..8]
 
+// List comprehensions
 
 let a =
     [ for i in 1..10 do
@@ -29,6 +30,7 @@ let d =
     [ for i in 1..3 do
         yield! [i..3] ]
 
+// Array comprehensions
 
 let e = [| 1..3 |]
 
@@ -39,4 +41,4 @@ let f =
 
 let g =
     [| for i in 1..3 do
-         yield! [|1..3|] |]
+         yield! [|i..3|] |]
