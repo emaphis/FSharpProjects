@@ -21,7 +21,10 @@
     <None Include="13UnitsOfMeasure.fsx" />
     <None Include="14Loops.fsx" />
     <None Include="15Comprehensions.fsx" />
-    <None Include"16Sequences.fsx" />
+    <None Include="16Sequences.fsx" />
+    <None Include="17Sets.fsx" />
+    <None Include="18Options.fsx" />
+    <None Include="19ActivePatterns.fsx" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
