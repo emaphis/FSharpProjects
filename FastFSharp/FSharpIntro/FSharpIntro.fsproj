@@ -25,6 +25,7 @@
     <None Include="17Sets.fsx" />
     <None Include="18Options.fsx" />
     <None Include="19ActivePatterns.fsx" />
+    <None Include="20Maps.fsx" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
