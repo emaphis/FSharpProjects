@@ -1,0 +1,29 @@
+# Discount model
+
+Feature: Applying a discount
+Scenario: Eligible Registered Customers get 10% discount when they
+          spend l100 or more
+
+
+Given the following Registered Customers
+|Customer Id|Is Eligible|
+|John       |true       |
+|Mary       |true       |
+|Richard    |false      |
+
+When [Customer Id] spends [Spend]
+Then their order total after applying [Discount] will be [Total]
+
+No Discount Applied Examples:
+|Customer Id|   Spend|   Total|Reason         |
+|Mary       |   99.00|   99.00|Spend to low   |
+|Richard    |  100.00|  100.00|Not elegible   |
+|Sarah      |  100.00|  100.00|Not registered |
+
+Discount Applied Examples:
+|Customer Id|   Spend|   Total|
+|John       |  100.00|   90.00|
+
+Notes:
+Sarah is not a Registered Customer
+Only Registered Customers can be Eligible

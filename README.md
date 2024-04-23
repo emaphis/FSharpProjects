@@ -13,3 +13,11 @@ By Micheal R. Hansen and Hans Rishel
 <https://github.com/ijrussell/essential-fsharp>
 
 ./Essential
+
+## Essentials also by Ian Russel
+
+Website: <https://amplifyingfsharp.io/fsharp-essentials/>
+
+Playlist: <https://www.youtube.com/playlist?list=PL1r7XrpHzfvy4w3GYSBtK0RzNUvP4jRlw>
+
+Director:  ./Essentials
