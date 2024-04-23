@@ -14,10 +14,10 @@ type CalculateTotal = (Customer * Spend) -> Total
 
 let calculateTotal (customer: Customer, spend: Spend) : Total =
     let discount =
-        if customer.IsRegistered && customer.IsEligible && spend >= 100m then
+        match customer with
+        | { IsRegistered = true; IsEligible = true } when spend >= 100m ->
             spend * 0.10m
-        else
-            0m
+        | _ -> 0m
     spend - discount
 
 

@@ -8,12 +8,13 @@ type CalculateTotal = (Customer * Spend) -> Total
 
 
 let calculateTotal (customer: Customer, spend: Spend) : Total =
-    let (name, isRegistered, isElegible) = customer
     let discount =
-        if isRegistered && isElegible && spend >= 100m then
+        match customer with
+        | _, true, true  when spend >= 100m ->
             spend * 0.10m
-        else
-            0m
+        | _, true, true -> 0m
+        | _ -> 0m
+
     spend - discount
 
 
