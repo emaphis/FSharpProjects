@@ -17,3 +17,7 @@ Tupled functions, curried funcions, partial application
 '|>' '>>'
 
 fun ()  -- function that takes a unit.
+
+## Lecture 03 - Function Composition with Effects
+
+Option type
