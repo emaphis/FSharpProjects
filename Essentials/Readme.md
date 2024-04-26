@@ -21,3 +21,7 @@ fun ()  -- function that takes a unit.
 ## Lecture 03 - Function Composition with Effects
 
 Option type
+
+Result type
+
+map, bind
