@@ -25,3 +25,16 @@ Option type
 Result type
 
 map, bind
+
+## Lecture 04 - Deep Dive into Collections
+
+List/ResizeArray
+
+Array
+
+Sequences
+
+Map/Dictionary
+
+Set
+
