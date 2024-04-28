@@ -142,3 +142,6 @@ Result.bind // (('a -> Result<'b,'c>) -> Result<'a,'c> -> Result<'b,'c>)
 List.map    // (('a -> 'b) -> 'a list -> 'b list)
 List.collect   //(('a -> 'b list) -> 'a list -> 'b list)
 
+[1..4] |> List.collect (fun x -> [1..x])
+
+[1..4] |> List.collect (fun x -> [x * 2])
