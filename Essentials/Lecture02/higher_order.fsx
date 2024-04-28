@@ -32,4 +32,3 @@ let write message =
     printfn $"{message}"
 
 write "A Message."
-

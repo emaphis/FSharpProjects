@@ -111,5 +111,34 @@ let sum5 =
 
 // FizzBuz
 
+let fizzBuzz input =
+    [(3, "Fizz"); (5, "Buzz")]
+    |> List.map (fun (value, msg) -> if input % value = 0 then msg else "")
+    |> List.reduce (fun acc item -> acc + item)
+    |> fun value -> if value <> "" then value else string input
 
+
+let fb8 =
+    [1..20] |> List.map fizzBuzz
+
+
+// Conversions
+
+// List.toArray
+// List.toSeq
+
+// Array.ofList
+// Seq.ofList
+
+
+// map and bind
+
+Option.map  // (('a -> 'b) -> 'a option -> 'b option)
+Option.bind // (('a -> 'b option) -> 'a option -> 'b option)
+
+Result.map  // (('a -> 'b) -> Result<'a,'c> -> Result<'b,'c>)
+Result.bind // (('a -> Result<'b,'c>) -> Result<'a,'c> -> Result<'b,'c>)
+
+List.map    // (('a -> 'b) -> 'a list -> 'b list)
+List.collect   //(('a -> 'b list) -> 'a list -> 'b list)
 
