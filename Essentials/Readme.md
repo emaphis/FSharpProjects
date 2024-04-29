@@ -36,5 +36,11 @@ Sequences
 
 Map/Dictionary
 
-Set
+## Lecture 05 - Organising your 
+
+Exceptions
+
+Namespaces
+
+Modules
 
