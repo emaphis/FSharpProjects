@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Modeling.fs" />
     <Compile Include="Code.fs" />
     <None Include="Script1.fsx" />
     <Compile Include="Program.fs" />

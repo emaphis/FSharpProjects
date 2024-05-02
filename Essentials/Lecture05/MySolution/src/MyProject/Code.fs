@@ -20,7 +20,7 @@ type UpgradeCusomeError =
     | IncreaseCredit of IncreaseCreditIfVIPError
 
 
-module Customer = 
+module Customer =
 
     // Customer -> Result<(Customer * decimal), exn>
     let getPurchases customer =
@@ -28,7 +28,7 @@ module Customer =
         if customer.Id % 2 = 0 then Ok (customer, 120m)
         else Error (HasOddId customer.Id)
 
-   
+
     // Customer * decimal -> Customer
     let tryPromoteToVIP purchaes =
         let customer, amount = purchaes
@@ -39,11 +39,11 @@ module Customer =
     // Customer -> Result<Customer,exn>
     let increaseCreditIfVip customer =
         // Imagine this function could cause an exceptio
-        if customer.IsVip then 
+        if customer.IsVip then
             Ok { customer with Credit = customer.Credit + 100.0m }
         else Error IsNotVIP
 
-    let upgradeCustomer customer :  Result<Customer, UpgradeCusomeError> = 
+    let upgradeCustomer customer :  Result<Customer, UpgradeCusomeError> =
         customer
         |> getPurchases
         |> Result.mapError (fun err -> GetPurchases err)
@@ -55,4 +55,3 @@ module Customer =
                 | Ok res -> Ok res
                 | Error err -> Error (IncreaseCredit err)
             | Error err -> Error err
-
