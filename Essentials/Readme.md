@@ -36,7 +36,11 @@ Sequences
 
 Map/Dictionary
 
-## Lecture 05 - Organising your 
+## Lecture 05 - Organising your
+
+#load "somename.fs"
+
+#load "other.fsx"
 
 Exceptions
 
