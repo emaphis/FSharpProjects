@@ -49,3 +49,9 @@ Namespaces
 Modules
 
 Testing  Xunit/FSUnit
+
+## Lesson 06 - Processing external data
+
+CSV
+
+JSON

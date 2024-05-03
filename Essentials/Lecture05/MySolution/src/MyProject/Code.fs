@@ -43,7 +43,8 @@ module Customer =
             Ok { customer with Credit = customer.Credit + 100.0m }
         else Error IsNotVIP
 
-    let upgradeCustomer customer :  Result<Customer, UpgradeCusomeError> =
+    // original version - updated below
+    let upgradeCustomer0 customer :  Result<Customer, UpgradeCusomeError> =
         customer
         |> getPurchases
         |> Result.mapError (fun err -> GetPurchases err)
@@ -55,3 +56,36 @@ module Customer =
                 | Ok res -> Ok res
                 | Error err -> Error (IncreaseCredit err)
             | Error err -> Error err
+
+    // Result.bind    : (('a -> Result<'b,'c>) -> Result<'a,'c> -> Result<'b,'c>)
+    // Result.map     : (('a -> 'b) -> Result<'a,'c> -> Result<'b,'c>)
+    // Result.mapError: (('a -> 'b) -> Result<'c,'a> -> Result<'c,'b>)
+
+    let upgradeCustomer1 customer :  Result<Customer, UpgradeCusomeError> =
+        customer
+        |> getPurchases
+        |> Result.mapError (fun err -> GetPurchases err)
+        |> Result.map tryPromoteToVIP
+        |> Result.bind (fun cust ->
+                match increaseCreditIfVip cust with
+                | Ok res -> Ok res
+                | Error err -> err |> IncreaseCredit |> Error
+                )
+
+    // final version
+    let upgradeCustomer customer :  Result<Customer, UpgradeCusomeError> =
+        customer
+        |> getPurchases
+        |> Result.mapError (fun err -> GetPurchases err)
+        |> Result.map tryPromoteToVIP
+        |> Result.bind (fun cust ->
+            cust
+            |> increaseCreditIfVip
+            |> Result.mapError IncreaseCredit
+            )
+
+    // def of maperror
+    let mapE (fn: 'errA -> 'errB) (result: Result<'cst, 'errA>) : Result<'cst, 'errB> =
+        match result with
+        | Ok res -> Ok res
+        | Error ex -> ex |> fn |> Error
