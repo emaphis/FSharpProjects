@@ -50,8 +50,24 @@ Modules
 
 Testing  Xunit/FSUnit
 
-## Lesson 06 - Processing external data
+## Lesson 06 - Processing external data - TODO
+
+DustyTables
+
+FSharp.Data
+
+Type Providers
+
+Dapper.Fsharp
+
+not EntityFramework
 
 CSV
 
+CsvHelperS
+
 JSON
+
+XML
+
+Fabel.SimpleXML
