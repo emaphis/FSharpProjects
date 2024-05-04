@@ -84,4 +84,10 @@ Testing  Xunit/FSUnit
 
 ### Active Patterns
 
-    Partial vs. Total
+    Partial Active Patterns
+
+    Parameterized Partial Active Patterns
+
+    Multi-Case Active Patterns
+
+    Single-Case Active Patterns

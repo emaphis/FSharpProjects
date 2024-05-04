@@ -2,6 +2,19 @@
 
 open System
 
+let parse0 input =
+    match DateTime.TryParse(input) with
+    | true, value -> Some value
+    | false, _  -> None
+
+
+let bad0 = parse0 "2024-23-18"
+
+let good0 = parse0 "2024-03-18"
+
+
+// An+ active pattern
+
 let (|DateTime|_|) (input:string) =
     match DateTime.TryParse(input) with
     | true, value -> Some value
@@ -35,17 +48,30 @@ let (|Lmail|_|) input =
     | ParseRegex ".*?@(.*)" [ _ ] -> Some input
     | _ -> None
 
-// Paramatized Partial Active Patternss
-
+// Paramatized Partial Active Patternss+
 // FizzBuzz
+
+// Canonical
+
+let fizzBuzzC input =
+    if input % 3 = 0 && input % 5 = 0 then "FizzBuzz"
+    elif input % 3 = 0 then "Fizz"
+    elif input % 5 = 0 then "Buzz"
+    else input |> string
+
+[1..12] |> List.map fizzBuzzC
+
+// Using pattern matching
 
 let fizzBuzz0 input =
     match input % 3 = 0, input % 5 = 0 with
     | (true, true) -> "FizzBuzz"
-    | (true, false) -> "Fizz"
-    | (false, true) -> "Buzz"
-    | (false, false) -> string input
+    | (true, _) -> "Fizz"
+    | (_, true) -> "Buzz"
+    | _ -> input |> string
 
+
+// Using active patterns
 
 let (|IsDivisibleBy1|_|) divisor input =
     if input % divisor = 0 then Some () else None
@@ -56,8 +82,6 @@ let fizzBuzz1 input =
     | IsDivisibleBy1 3 -> "Fizz"
     | IsDivisibleBy1 5 -> "Buzz"
     | _ -> string input
-
-
 
 
 let (|IsDivisibleBy|_|) (divisors: int list) (input: int) =
@@ -74,5 +98,20 @@ let fizzBuzz input =
     | _ -> "Unknown"
 
 
-let izz: string list = [1..20] |> List.map (fun num -> fizzBuzz num)
+[1..20] |> List.map (fun num -> fizzBuzz num)
 
+
+// This is extensible
+
+let fizzBuzsBazz input =
+    match input with
+    | IsDivisibleBy [3;5;7] -> "FizzBuzzBazz"
+    | IsDivisibleBy [3;5] -> "FizzBuzz"
+    | IsDivisibleBy [3;7] -> "FizzBazz"
+    | IsDivisibleBy [5;7] -> "BuzzBazz"
+    | IsDivisibleBy [3] -> "Fizz"
+    | IsDivisibleBy [5] -> "Buzz"
+    | IsDivisibleBy [7] -> "Bazz"
+    | _ -> input |> string
+
+[1..100] |> List.map fizzBuzsBazz
