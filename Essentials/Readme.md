@@ -52,22 +52,34 @@ Testing  Xunit/FSUnit
 
 ## Lesson 06 - Processing external data - TODO
 
-DustyTables
+### Exernal Data
 
-FSharp.Data
+    SQL
 
-Type Providers
+        DustyTables
 
-Dapper.Fsharp
+        Dapper.Fsharp
 
-not EntityFramework
+    JSON
 
-CSV
+    XML
 
-CsvHelperS
+    CSV
 
-JSON
+        Fabel.SimpleXML
 
-XML
+### Anonomous records
 
-Fabel.SimpleXML
+### Type Providers
+
+    Generated vs. Erasedd
+
+    FSharp.Data (JSON, CSV, XML, HTML)
+
+    Azur Storage (Tables, Blobs, Queues)
+
+## Lesson 07 - More Pattern Ma--
+
+### Active Patterns
+
+    Partial vs. Total
