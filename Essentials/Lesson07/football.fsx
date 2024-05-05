@@ -1,6 +1,5 @@
 // Lesson 7 - Football scores
 
-
 // The rules are simple;
 
 // Matched score = 3 - (0, 0) && (0, 0)
