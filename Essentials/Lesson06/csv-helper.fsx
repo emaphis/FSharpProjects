@@ -29,9 +29,7 @@ let getCustomers file =
     Path.Combine(__SOURCE_DIRECTORY__, file)
     |> Customers.Load
     |> fun customers -> customers.Rows
-   // |> Seq.skip 1
     |> Seq.map (fun row  ->
-     
             { 
                 Id = row.CustomerId
                 Email = row.Email
@@ -42,3 +40,6 @@ let getCustomers file =
             }
         )
 
+let data = getCustomers "customers.csv"
+
+printfn "%A" data
