@@ -1,15 +1,16 @@
 // Lesson 7 - parsing
 
 open System
-open System.IO
+open System.Text.RegularExpressions
+
 
 type Customer = {
     Name : string
     Email : string
-    IsEligible : string
-    IsRegistered : string
-    DateRegistered : string
-    Discount : string
+    IsEligible : bool
+    IsRegistered : bool
+    DateRegistered : DateTime
+    Discount : Decimal
 }
 
 let createCustomer name email eligible registered dateRegistered discount = 
@@ -23,54 +24,68 @@ let createCustomer name email eligible registered dateRegistered discount =
     }
 
 
-type ValidatedCustomer = {
-    Name : string
-    Email : string option
-    IsEligible : bool
-    IsRegistered : bool
-    DateRegistered : DateTime option 
-    Discount : decimal option
-}
+let (|ParseRegex|_|) regex str =
+    let m = Regex(regex).Match(str)
+    if m.Success && m.Groups.Count >= 1 then
+        [ for x in m.Groups -> x.Value ]
+        |> List.tail
+        |> Some
+    else None
 
 
-type DataReader = string -> Result<string seq,exn>
-
-let readFile : DataReader =
-    fun path ->
-        try
-            seq { 
-                use reader = new StreamReader(File.OpenRead(path))
-                while not reader.EndOfStream do
-                    reader.ReadLine() 
-            }
-            |> Ok
-        with
-        | ex -> Error ex
+let (|Email|_|) input =
+    match input with
+    | ParseRegex ".*?@(.*)" [ _ ] -> Some input
+    | _ -> None
 
 
-let parseLine (line:string)  =
-    match line.Split('|') with
-    | [| name; email;  eligible;  registered;  dateRegistered;  discount |] ->
-        createCustomer name  email  eligible  registered  dateRegistered  discount |> Ok
-    | _ -> Error $"Invalid line {line}"
+let (|DateTime|_|) (input:string) =
+    match DateTime.TryParse(input) with
+    | true, value  -> Some value
+    | false, _  -> None
 
-;;
 
-let parse (data:string seq) =
-    data
-    |> Seq.skip 1
-    |> Seq.map parseLine
-    |> Seq.choose id
+let (|Decimal|_|) (input:string) =
+    match Decimal.TryParse input with
+    | true, value -> Some value
+    | false, _ -> None
+     
 
-let output data =
-    data 
-    |> Seq.iter (fun x -> printfn "%A" x)
+let (|Boolean|_|) (input:string) =
+    match input with
+    | "1" -> Some true
+    | "0" -> Some false
+    | _ -> None
 
-let import (dataReader:DataReader) path =
-    match path |> dataReader with
-    | Ok data -> data |> parse |> output
-    | Error ex -> printfn "Error: %A" ex.Message
 
-Path.Combine(__SOURCE_DIRECTORY__, "resources", "customers.csv")    
-|> import readFile
+let (|NotEmptyString|_|) (input:string) =
+    if input.Length > 0 then Some input else None 
 
+
+let (|Split|) (on:char) (input:string) =
+    input.Split(on)
+    |> Array.toList
+
+
+let parse (input:string)  =
+    match input with
+    | Split '|'
+        [ NotEmptyString name;
+          Email email;
+          Boolean eligible;
+          Boolean registered;
+          DateTime dateRegistered;
+          Decimal discount
+        ] ->
+        createCustomer name email eligible registered dateRegistered discount |> Ok
+    | _ -> Error $"Invalid line {input}"
+
+
+let john = "John|john@test.com|1|1|2015-01-23|0.1"
+
+let fred = "Fred|fred'semail|1|1|2015-01-23|0.1"
+
+
+let parseJohn = john |> parse
+
+let parseFred = fred |> parse
