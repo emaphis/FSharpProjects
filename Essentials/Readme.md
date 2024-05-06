@@ -93,3 +93,9 @@ Testing  Xunit/FSUnit
     Single-Case Active Patterns
 
 ## Lesson 08 - Functional validation
+
+    Using active patterns
+
+    Applicatives in error handling
+
+    Computational expressions
