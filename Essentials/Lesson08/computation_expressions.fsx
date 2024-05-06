@@ -74,7 +74,7 @@ let validateDiscount (input:string) =
     | _ -> Error [$"{input} invalid decimal"]
 
 
-let create name email dateOfBirth discount : ValidatedUser =
+let createValidatedUser name email dateOfBirth discount : ValidatedUser =
     { Name = name
       Email = email
       DateOfBirth = dateOfBirth
@@ -88,7 +88,7 @@ let validateUser (input:UnvalidatedUser) : Result<ValidatedUser, string list> =
         and! email = validateEmail input.Email
         and! dateOfBirth = validateDateOfBirth input.DateOfBirth
         and! discount = validateDiscount input.Discount
-        return create name email dateOfBirth discount
+        return createValidatedUser name email dateOfBirth discount
     }
  
 let createUnvalidatedUser (name, email,  dateOfBirth, discount) : UnvalidatedUser = 

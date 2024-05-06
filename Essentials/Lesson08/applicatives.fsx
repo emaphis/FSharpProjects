@@ -1,4 +1,5 @@
 // Lesson 8 - Functional Validations
+// Using Applicatives
 
 open System
 open System.Text.RegularExpressions
@@ -71,12 +72,26 @@ let validateDiscount (input:string) =
     | _ -> Error [$"{input} invalid decimal"]
 
 
-let create name email dateOfBirth discount : ValidatedUser =
+let createValidated name email dateOfBirth discount : ValidatedUser =
     { Name = name
       Email = email
       DateOfBirth = dateOfBirth
       Discount = discount
     }
+
+
+// map: f: ('a -> 'b) -> result: Result<'a,'c> -> Result<'b,'c>
+let map f result =
+    match result with
+    | Ok x -> x |> f |> Ok
+    | Error err -> Error err
+
+//  bind: f: ('a -> Result<'b,'c>) -> result: Result<'a,'c> -> Result<'b,'c>
+let bind f result =
+    match result with
+    | Ok x -> x |> f
+    | Error err -> Error err
+
 
 let apply fResult vResult =
     match fResult, vResult with
@@ -87,7 +102,7 @@ let apply fResult vResult =
         Error (List.concat [err1; err2])
 
 let (<!>) =
-    Result.map
+    map
 
 let (<*>) =
     apply
@@ -98,7 +113,7 @@ let validateUser (input:UnvalidatedUser) = // : Result<ValidatedUser, string lis
     let email = validateEmail input.Email
     let dateOfBirth = validateDateOfBirth input.DateOfBirth
     let discount = validateDiscount input.Discount
-    create
+    createValidated
     <!> name
     <*> email
     <*> dateOfBirth

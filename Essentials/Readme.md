@@ -99,3 +99,7 @@ Testing  Xunit/FSUnit
     Applicatives in error handling
 
     Computational expressions
+
+## Lesson 09 - Improving your Domain Models
+
+
