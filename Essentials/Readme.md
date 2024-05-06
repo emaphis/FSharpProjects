@@ -91,3 +91,5 @@ Testing  Xunit/FSUnit
     Multi-Case Active Patterns
 
     Single-Case Active Patterns
+
+## Lesson 08 - Functional validation

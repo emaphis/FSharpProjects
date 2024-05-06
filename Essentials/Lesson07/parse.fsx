@@ -49,7 +49,7 @@ let (|Decimal|_|) (input:string) =
     match Decimal.TryParse input with
     | true, value -> Some value
     | false, _ -> None
-     
+
 
 let (|Boolean|_|) (input:string) =
     match input with
@@ -59,7 +59,7 @@ let (|Boolean|_|) (input:string) =
 
 
 let (|NotEmptyString|_|) (input:string) =
-    if input.Length > 0 then Some input else None 
+    if input.Length > 0 then Some input else None
 
 
 let (|Split|) (on:char) (input:string) =
