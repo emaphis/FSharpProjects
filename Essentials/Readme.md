@@ -103,3 +103,13 @@ Testing  Xunit/FSUnit
 ## Lesson 09 - Improving your Domain Models
 
     Single-case Discrimated Unions
+
+## Lesson 10 - Object programming
+
+    Class Types
+
+    Interfaces
+
+    Object Expressions
+
+## Recursion

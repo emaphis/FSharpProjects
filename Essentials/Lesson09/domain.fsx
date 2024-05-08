@@ -22,7 +22,23 @@ type UserValidationError =
     | InvalidDateOfBirth of string
     | InvalidDiscount of string
 
-    
+ 
+ type UnvalidatedUser = {
+     Name : string
+     Email : string
+     DateOfBirth : string
+     Discount : string
+ }
+ 
+ type ValidatedUser = {
+     Name : Name
+     Email : Email
+     DateOfBirth : DateOfBirth
+     Discount : Discount
+ }
+ 
+ type ValidateUser = UnvalidatedUser -> Result<ValidatedUser, UserValidationError list>
+ 
 
 let (|ParseRegex|_|) regex str =
     let m = Regex(regex).Match(str)
@@ -43,23 +59,6 @@ module Email =
         | ParseRegex ".*?@(.*)" [ _ ] -> Ok (Email input)
         | _ -> Error (InvalidEmail (EmailError input))
 
-
-
-type UnvalidatedUser = {
-    Name : string
-    Email : string
-    DateOfBirth : string
-    Discount : string
-}
-
-type ValidatedUser = {
-    Name : Name
-    Email : Email
-    DateOfBirth : DateOfBirth
-    Discount : Discount
-}
-
-type ValidateUser = UnvalidatedUser -> Result<ValidatedUser, UserValidationError list>
 
 
 let (|Split|) (on:char) (input:string) =
