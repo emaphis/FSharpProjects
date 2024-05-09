@@ -11,17 +11,55 @@ let (|ParseRegex|_|) regex str =
         |> Some
     else None
 
-type CustomerId = CustomerId of Guid
 
-
-let (|Email|_|) input =
+let (|IsEmail|_|) input =
     match input with
     | ParseRegex ".*?@(.*)" [ _ ] -> Some input
     | _ -> None
 
+
+type CustomerId = CustomerId of Guid
+
+
+module MyTypes =
+
+    type Email = private Email of string
+
+
+    module Email =
+
+        let value input = input |>  fun (Email email) -> email  // deconstruct 
+
+        let create input = 
+            match input with
+            | IsEmail _  -> input |> Email |> Ok
+            | _  -> Error $"{input} is invalid Email"
+
+
+
+open MyTypes
+
 type Customer = {
-    Id: Guid
+    Id: CustomerId
     Name: string
-    Email: string
+    Email: Email
 }
 
+
+let cust1 = {
+    Id = CustomerId (Guid.NewGuid())
+    Name = "John"
+    Email = Email.create "jown@home.com"
+}
+
+let email1 = cust1.Email
+
+let map f result =
+    match result with
+    | Ok x  -> x |> f |> Ok
+    | Error err -> Error err
+
+let mapError f result =
+    match result with
+    | Ok x  -> Ok x
+    | Error err -> err |> f |> Error
