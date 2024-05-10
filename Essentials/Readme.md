@@ -119,3 +119,11 @@ Testing  Xunit/FSUnit
     Tail-Call Recursion
 
 ## Lesson 11 - Computation Expressions
+
+    Seq, Async, Task, and Query (LINQ)
+
+    DSLs using custom opperations
+
+        Examples: Saturn, Farmer, FSHttp
+
+    Effects including combinations
