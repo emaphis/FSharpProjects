@@ -127,3 +127,17 @@ Testing  Xunit/FSUnit
         Examples: Saturn, Farmer, FSHttp
 
     Effects including combinations
+
+## Lesson 12 - Using ASP.NET Core
+
+    Landscape (Suave, Giraffe, Saturn, Falco, Oxpecker, Websharper and Safe Stack)
+
+    Getting statted with F# and ASP.Net Core
+
+    Installing Giraffe
+
+    Endpoint Routing
+
+    Creating APIs
+
+    Creatoing Views
