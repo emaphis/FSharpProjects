@@ -14,4 +14,8 @@ Website: <https://amplifyingfsharp.io/fsharp-essentials/>
 
 Playlist: <https://www.youtube.com/playlist?list=PL1r7XrpHzfvy4w3GYSBtK0RzNUvP4jRlw>
 
-Director:  ./Essentials
+Directory:  ./Essentials
+
+## F# in Action by Isaac Abraham
+
+Directory: ./FSAction
