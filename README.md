@@ -19,3 +19,9 @@ Directory:  ./Essentials
 ## F# in Action by Isaac Abraham
 
 Directory: ./FSAction
+
+## 
+
+by Adnan Masood, Ph.D.
+
+Directory: FSDataStructures
