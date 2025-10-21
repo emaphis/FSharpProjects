@@ -22,6 +22,7 @@ let addTenThenDouble theNumber =
     let website = System.Uri "https://fsharo.org"
     answer
 
+do printfn "%d" (addTenThenDouble 10)
 
 // Listing 3.2 A verbose version of F# syntax basics
 let addTenThenDoubleV (theNumber : int) : int =
@@ -30,6 +31,8 @@ let addTenThenDoubleV (theNumber : int) : int =
     printfn $"({theNumber} + 10) * 2 is {answer}";
     let website : System.Uri = new System.Uri ("https://fsharp.org");
     answer;
+
+do printfn "%d" (addTenThenDoubleV 10)
 
 
 // 3.1.2 The let keyword
@@ -41,13 +44,17 @@ let doACalculation theNumber =
     let foo = System.Uri "https://fsharo.org"
     answer
 
+do printfn "%d" (doACalculation 10)
+
 // Functions are just values
 
+// value defined by `let`
 let isaac = 42
 let olderIsaac = isaac + 1
 let youngerIsaac = isaac - 1
 
 // 3.1.3 Scoping
+// F# is scoped by indentation not kewords.
 
 
 // Exercise 3.1
@@ -57,10 +64,14 @@ let youngerIsaac = isaac - 1
 //  bind it to a symbol answer. Finally, return a string that says The
 //  answer is {answer} using string interpolation.
 
+/// (a + b) * c
 let addTwoThenMultiply a b c =
     let inProgress = a + b
     let answer = inProgress * c
     $"The answer is {answer}"
+
+let str1 = addTwoThenMultiply 2 3 4 
+do printfn "%s" str1
 
 
 // Nested Scopes
@@ -81,12 +92,16 @@ let greetingText0 =
 
 
 // Nested Functions
-
+// Because functions are simply values, there is no problem defining 
+// functions inside of the scope of other functions.
 let greetingTextWithFunction person = 
     let makeFullName fname sname =
         $"{fname} {sname}"
     let fullName = makeFullName "Frank" "Schmidt"
     $"Greetings {fullName} from {person}"
+
+let greet1 =  greetingTextWithFunction "Charley"
+do printfn "%s" greet1
 
 
 // Accessing Outer Scoped Values
@@ -94,12 +109,16 @@ let greetingTextWithFunction person =
 // Listing 3.3 Accessing outer scoped values
 
 let greetingTextWithFunction0 =
-    let city = "London"
+    let city = "London"  // Declares the symbol city in an outer scope
     let makeFullName fname sname =
         $"{fname} {sname} from {city}"
     let fullName = makeFullName "Frank" "Schmidt"
     let surnameCity = $"{sname} from {city}"
     $"Greetings, {fullName}"
+
+let greet2 = greetingTextWithFunction0
+do printfn "%s" greet2
+
 
 // Cyclical Dependencies
 // let description = $"{employee} lives in New York."   // wont compile
@@ -128,12 +147,20 @@ let add0 (a: int) (b: int) : int =
     let answer: int  = a + b
     answer
 
+let aa0 = add0 3 4
+do printfn "%d" aa0
+
+
 // Exercise 3.2
 // Exercise3_2.fsx
 
 let add a b =
     let answer = a + b
     answer
+
+let aa = add 3 4
+do printfn "%d" aa
+
 
 // Exercise 3.3
 
@@ -147,7 +174,7 @@ let add a b =
 //    13.34 (which is a float, not an int) to a + b on line 3.
 //    What happens?
 
-// let add1 a (b : int) : string =
+//let add1 a (b : int) : string =
 //    let answer : string = a + b + 13.34
 //    answer
 
@@ -155,7 +182,11 @@ let add a b =
 // 3.2.3 Inferring generics
 
 // Working with Existing Generic Types
+// `ResizeArray is a type alieas for the
 //  System.Collections.Generic.List<'T>
+
+let genlist = System.Collections.Generic.List<int>() 
+// val genlist: System.Collections.Generic.List<int>
 
 let explicit = ResizeArray<int>()
 // val explicit: ResizeArray<int>
@@ -165,11 +196,19 @@ typeHole.Add 99
 // val typeHole: ResizeArray<int>
 
 let omitted = ResizeArray()
-omitted.Add 10
+omitted.Add 10  // must be evaluated together for type inference to work.
 // val omitted: ResizeArray<int>
+
+genlist.Add 10
+explicit.Add 10
+typeHole.Add 10
+omitted.Add 10
 
 
 // Exercise 3.4
+//  Change the value 10 to a string. What happens to the type of
+//  omitted?
+
 let omitted1 = ResizeArray()
 omitted1.Add "A string"
 // val omitted1: ResizeArray<string>
@@ -177,6 +216,7 @@ omitted1.Add "A string"
 
 // Automatic Generalization
 
+// explicit definition
 let combineElements<'T> (a: 'T) (b: 'T) (c: 'T) =
     let output = ResizeArray<'T>()
     output.Add a
@@ -186,12 +226,12 @@ let combineElements<'T> (a: 'T) (b: 'T) (c: 'T) =
 
 // val combineElements: a: 'T -> b: 'T -> c: 'T -> ResizeArray<'T>
 
-combineElements 1 2 3
-// val it: ResizeArray<int> = seq [1; 2; 3]
+let resarr1 = combineElements 1 2 3
+// val resarr1: ResizeArray<int> = seq [1; 2; 3]
 
 //combineElements 1 2 "test"  // does not compile
 
-
+// inferred types
 let combineElements1 a b c =
     let output = ResizeArray()
     output.Add a
@@ -201,8 +241,8 @@ let combineElements1 a b c =
 
 // val combineElements1: a: 'a -> b: 'a -> c: 'a -> ResizeArray<'a>
 
-combineElements1 1 2 3
-// val combineElements1: a: 'a -> b: 'a -> c: 'a -> ResizeArray<'a>
+let resarr2 = combineElements1 1 2 3
+// val resarr2: ResizeArray<int>
 
 
 // 3.2.4 Diagnosing unexpected type

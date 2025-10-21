@@ -1,6 +1,7 @@
 // Exercise 3.5
 
-let calculateGroup (age: int) =
+let calculateGroup age =
+    //if age < "test" then "Child"  // bad expression
     if age < 18 then "Child"
     elif age < 65 then "Adult"
     else "Pensioner"

@@ -33,6 +33,18 @@
 //    10. Observe that the CodeLens still correctly
 //        understands that a is an integer.
 
+// Original
+let add0 (a: int) (b: int) : int =
+    let answer: int  = a + b
+    answer
+
+let aa0 = add0 3 4
+do printfn "%d" aa0
+
+// Modified
 let add a b =
     let answer = a + b
     answer
+
+let aa = add 3 4
+do printfn "%d" aa
