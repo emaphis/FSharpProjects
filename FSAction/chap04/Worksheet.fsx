@@ -4,6 +4,50 @@
 
 // 4.1 Expressions
 
+// 4.1.2 Difficulti with statements
+
+(*
+public void DescribeAge(int age)
+{
+    string ageDescription = null;  // Initializes a variable with a default value
+
+    var greeting = "Hello";        // Creates a variable to use later
+
+    if (age < 18)
+        ageDescription = "Child";  //  First if branch
+    else if (age < 65)
+        ageDescription = "Adult";  // Second if branch
+    else
+        ageDescription = "DAP";
+
+    Console.WriteLine($"{greeting}! You are '{ageDescription}'.");
+}
+
+DescribeAge(45);
+*)
+
+// 4.1.3 Expressions to the rescue
+
+(*
+using System;
+
+private static string GetDescription(int age)   
+{
+    if (age < 18) return "Child!";
+    else if (age < 65) return "Adult!";
+    else return "OAP!";
+}
+
+public void DescribeAge(int age)
+{
+    var ageDescription = GetDescription(age);
+
+    var greeting = "Hello";
+    Console.WriteLine($"{greeting}! You are a '{ageDescription}'.");
+}
+
+*)
+
 // 4.1.4 Expressions in F#
 
 //  Listing 4.3 Working in an expression-oriented language
@@ -49,7 +93,7 @@ let printAdditon a b =
 
 // val printAdditon: a: int -> b: int -> unit
 
-printAdditon 3 4
+do printAdditon 3 4
 // 3 plus 4 equals 7
 
 
@@ -59,13 +103,13 @@ let getTheCurrentTime0 = System.DateTime.Now
 // val getTheCurrentTime0: System.DateTime = 8/7/2024 2:36:58 PM
 let x0 = getTheCurrentTime0
 let y0 = getTheCurrentTime0
-// Outputs the same
+// Outputs the same because it's an immutable value
 
 let getTheCurrentTime1 () = System.DateTime.Now
 // val getTheCurrentTime1: unit -> System.DateTime
 let x1 = getTheCurrentTime1 ()
 let y1 = getTheCurrentTime1 ()
-// Different output
+// Different output because it's a function value that takes a unit.
 
 
 // Unit and Side Effects
@@ -79,6 +123,8 @@ let addDays days =
 // val addDays: days: float -> System.DateTime
 
 let result1 = addDays 5
+//You gave me 5 days and I gave you 10/26/2025 12:00:00 AM
+//val result1: System.DateTime = 10/26/2025 12:00:00 AM
 
 
 // 4.1.7 Ignore
@@ -94,7 +140,7 @@ let result2 = addSeveralDays ()
 
 // 4.2 Immutable data
 
-// Imutable state
+// Immutable state
 
 let name = "isaac"
 let mutable age = 42
