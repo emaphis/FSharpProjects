@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="CoreTypes.fsx" />
     <None Include="PrimitiveTypes.fsx" />
     <None Include="Functions.fsx" />
     <Compile Include="Program.fs" />
