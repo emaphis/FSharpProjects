@@ -52,7 +52,49 @@ ignore (square 4)
 // Tuples
 // ordered collection of data, to easlily clump together data as a unit.
 
+let dinner = "green eggs", "ham"
+//val dinner: string * string = ("green eggs", "ham")
 
+let dinner' = ("green eggs",  "ham")
+//val dinner': string * string = ("green eggs", "ham")
+
+let zeros = (0, 0L, 0I, 0.0)
+//al zeros: int * int64 * System.Numerics.BigInteger * float = (0, 0L, 0, 0.0)
+
+let nested'6 = (1, (2.0, 3M), (4L, "5"))
+//val nested'6: int * (float * decimal) * (int64 * string) =(1, (2.0, 3M), (4L, "5"))
+
+// Extract values using 'fst' 'snd'
+let nameTuple = ("John", "Smith")
+//val nameTuple: string * string = ("John", "Smith")
+
+let first = fst nameTuple
+//val first: string = "John"
+
+let last = snd nameTuple
+//val last: string = "Smith"
+
+// decomposition with pattern matching
+let snacks =  ("Soda", "Cookies", "Candy")
+
+let x, y, z = snacks
+//val z: string = "Candy"
+//val y: string = "Cookies"
+//val x: string = "Soda"
+
+y, z
+//val it: string * string = ("Cookies", "Candy")
+
+// passing tupels a parameter
+
+let add x y = x + y
+//val add: x: int -> y: int -> int
+
+let tupleAdd (x, y) = add x y
+//val tupleAdd: x: int * y: int -> int
+
+let sum1 = tupleAdd(3, 4)
+//val sum1: int = 7
 
 
 
