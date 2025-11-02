@@ -274,3 +274,78 @@ List.iter
 let printNumber x = printfn "Printing %d" x
 
 do List.iter printNumber [1..5]
+
+
+
+// Options
+
+//  Example 2-8. The option type storing if a string parses as an integer
+
+open System
+
+/// tries to parse an integer using the Int32.TryParse function.
+/// If the parsing is successful, the function will return Some(re
+/// sult); otherwise it will return None.
+let isInteger (str : string) =
+    let successful, result = Int32.TryParse(str)
+    if successful then Some result
+    else None
+
+let nun = isInteger "This is not and integer"
+//val nun: int option = Non
+let num = isInteger "400"
+// val num: int option = Some 400
+
+
+// Using Option.get
+let isLessThanZero x = (x < 0)
+
+let containsNegativeNumbers intList =
+    let filteredList = List.filter isLessThanZero intList
+    if List.length filteredList > 0
+    then Some filteredList
+    else None
+
+let negativeNumbers = containsNegativeNumbers [6; 20; -8; 45; -5]
+//val negativeNumbers: int list option = Some [-8; -5]
+
+let negativeNumbers2 = Option.get negativeNumbers
+//val negativeNumbers2: int list = [-8; -5]
+
+
+
+// Printf
+
+do printf "Hello, "
+do printfn "World!"
+
+//Hello, World!
+//val it: unit = ()
+
+// format specifiers
+
+let mountain = "K2"
+let height = 8611
+let units = 'm'
+
+do printfn "%s is %d%c high" mountain height units
+//K2 is 8611m high
+//val it: unit = ()
+
+// type inference will give you and error of the types don't match
+
+//do printfn "An integer = %d" 1.23
+//CoreTypes.fsx(336,30): error FS0001: The type 'float' is not compatible with any of the
+//types byte,int16,int32,int64,sbyte,uint16,uint32,uint64,nativeint,unativeint, arising
+//from the use of a printf-style format string
+
+// types of this function are inferred from the format specifiers
+let inferParams x y z =
+    printfn "x = %f, y = %s, z = %b"
+//val inferParams: x: 'a -> y: 'b -> z: 'c -> (float -> string -> bool -> unit)
+
+// `sprintf` is used when you need the result of the formatting as a string
+let location = "World"
+
+let greeting = sprintf "Hello, %s" location
+//val greeting: string = "Hello, World"
