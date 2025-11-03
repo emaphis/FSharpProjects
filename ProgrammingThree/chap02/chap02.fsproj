@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -6,9 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="CoreTypes.fsx" />
     <None Include="PrimitiveTypes.fsx" />
     <None Include="Functions.fsx" />
+    <None Include="CoreTypes.fsx" />
+    <Compile Include="Utilities.fs" />
+    <Compile Include="PlayingCards.fs" />
+    <None Include="OrganizingFSCode.fsx" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
