@@ -9,6 +9,7 @@
     <None Include="UnderstandingFunctions.fsx" />
     <None Include="PatternMatching.fsx" />
     <None Include="DiscriminatedUnions.fsx" />
+    <None Include="Records.fsx" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
