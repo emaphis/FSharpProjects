@@ -10,6 +10,7 @@
     <None Include="PatternMatching.fsx" />
     <None Include="DiscriminatedUnions.fsx" />
     <None Include="Records.fsx" />
+    <None Include="Sequences.fsx" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
