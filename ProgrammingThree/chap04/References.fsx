@@ -16,7 +16,7 @@ type Thing = Plant | Animal | Mineral
 
 // Error: Thing can not be null
 let testThing thing = function
-    | Plant -> "Plang"
+    | Plant -> "Plant"
     | Animal -> "Animal"
     | Mineral -> "Mineral"
    // | null -> "(null)"
