@@ -9,9 +9,9 @@
     <None Include="References.fsx" />
     <None Include="UnitsOfMeasure.fsx" />
     <None Include="Arrays.fsx" />
+    <None Include="MutableCollections.fsx" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
-  <ItemGroup />
 
 </Project>
