@@ -18,7 +18,7 @@ module ListT =
     let cnt = planets.Count
     //val cnt: int = 4
 
-
+    // Add a collection of values at once
     planets.AddRange(  [| "Jupiter"; "Saturn"; "Uranus"; "Neptune"; "Pluto" |] )
 
     let cnt2 = planets.Count
@@ -75,3 +75,31 @@ module Dictionary =
 
     do printElement2 "Be"
     //Atom with symbol with 'Beryllium' has weight 9.0122.
+
+
+module Hashset =
+
+    // Unordered collection with fast lookup
+
+    open System.Collections.Generic
+
+    let bestPicture = new HashSet<string>()
+
+    bestPicture.Add("The Artist")
+    bestPicture.Add("The King's Speech")
+    bestPicture.Add("The Hurt Locker")
+    bestPicture.Add("Slumdog Milionaire")
+    bestPicture.Add("No Country for Old Men")
+    bestPicture.Add("The Departed")
+
+    // Check if it was best picture
+    if bestPicture.Contains("Manos: The Hands of Fate") then
+        printfn "Sweet."
+    else
+        printfn "Oh no."
+
+
+    if bestPicture.Contains("No Country for Old Men") then
+        printfn "Sweet."
+    else
+        printfn "Oh no."
