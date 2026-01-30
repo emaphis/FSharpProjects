@@ -10,7 +10,10 @@
     <None Include="UnitsOfMeasure.fsx" />
     <None Include="Arrays.fsx" />
     <None Include="MutableCollections.fsx" />
+    <None Include="LoopingContructs.fsx" />
+    <None Include="Exceptions.fsx" />
     <Compile Include="Program.fs" />
+    <Compile Include="Example_4_18.fs" />
   </ItemGroup>
 
 

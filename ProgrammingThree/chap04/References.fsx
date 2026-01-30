@@ -47,7 +47,7 @@ module ReferenceTypeAliasing =
 
 module ChangingValues =
 
-// Mutable variables are those that you can cange.
+// Mutable variables are those that you can change.
 
     let mutable message = "World"
     printfn $"Hello, {message}"
