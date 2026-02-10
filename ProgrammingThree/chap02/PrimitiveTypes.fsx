@@ -12,8 +12,8 @@ let answerToEverything = 42UL
 let pi = 3.1415926M
 //val pi: decimal = 3.1415926M
 
-let avogadro = 6.022e23
-//val avogadro: float = 6.022e+23
+let avogadro = 6.022e-23
+//val avogadro: float = 6.022e-23
 
 // Primitives
 
@@ -26,9 +26,18 @@ let oct = 0o7771L
 let bin = 0b00101010y
 //val bin: sbyte = 42y
 
+// specify floating point numbers using hex, octal, or binary.
+
+let flt1 = 0x401E000000000000LF
+// val flt1: float = 7.5
+
+let flt2 = 0x00000000lf
+// val flt2: float32 = 0.0f
+
 
 // Arithmetic
 
+// overflow
 let short1 = 32767s + 1s
 //val short1: int16 = -32768s
 
