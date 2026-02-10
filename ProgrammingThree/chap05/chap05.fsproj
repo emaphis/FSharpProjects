@@ -6,9 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Program.fs" />
     <None Include="UnderstandingSystemObject.fsx" />
     <None Include="UnderstandingClasses.fsx" />
+    <Compile Include="File.fsi" />
+    <Compile Include="File.fs" />
+    <None Include="MethodsAnProperties.fsx" />
+    <Compile Include="Program.fs" />
   </ItemGroup>
 
 </Project>
