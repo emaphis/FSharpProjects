@@ -12,6 +12,7 @@
     <Compile Include="File.fs" />
     <None Include="MethodsAnProperties.fsx" />
     <Compile Include="Program.fs" />
+    <None Include="Inheritance.fsx" />
   </ItemGroup>
 
 </Project>
