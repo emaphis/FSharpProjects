@@ -2,7 +2,6 @@
 
 by Chris Smith.
 
-
 Source repositories for 2nd edition
 
 <https://github.com/leandrosilva/codes-from-books/tree/master/programming-fsharp>

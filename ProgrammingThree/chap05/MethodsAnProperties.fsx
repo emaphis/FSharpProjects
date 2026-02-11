@@ -210,14 +210,15 @@ module AccessibilityModifiersOnModules =
     do Logger.LogMessage("Status message")
 
 
-//module FSharpSignatureFile =
-    // F# signature file
-    // File.fsi
-    // File.fs
-    // Program.fs
+//#load "File.fsi"
+#load "File.fs"
 
-    //#load "File.fsi"
-    //#load "File.fs"
-
-    //open MyProject.Utilities
-    //let mClass = MyClass()
+module FSharpSignatureFile =
+    // File.fsi - signature file
+    // File.fs  - implementation faile
+    // Program.fs - use
+    
+    open MyProject.Utilities
+    let internal mClass = MyClass()
+    let prop1 = mClass.Property1
+    do printfn $"Property1 = {prop1}"
