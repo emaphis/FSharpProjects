@@ -6,7 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="Interfaces.fsx" />
+	<None Include="DoStuff.fsx" />
+	<None Include="ObjectExpressions.fsx" />
+	<None Include="ExtensionMethods.fsx" />
+	<None Include="ExtendingModules.fsx" />
+	<None Include="Enumerations.fsx" />
+	<None Include="TheNetPlatform.fsx" />
+	<None Include="Structs.fsx" />
     <Compile Include="Program.fs" />
   </ItemGroup>
+
+  <ItemGroup />
 
 </Project>
