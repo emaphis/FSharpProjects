@@ -6,8 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Program.fs" />
     <None Include="Classes.fsx" />
+    <None Include="InheritanceAndAbstractClasses.fsx" />
+    <None Include="Interfaces.fsx" />
+    <None Include="ObjectExpressions.fsx" />
+    <Compile Include="Program.fs" />
   </ItemGroup>
 
 </Project>
