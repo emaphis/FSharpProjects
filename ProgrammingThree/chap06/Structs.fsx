@@ -31,11 +31,40 @@ module CreatingStructs =
 
     // Automatic constructor that assigns each field a default value
 
-    /// Struct for describing a book.
+    /// Struct for describing a book. (automantically defined constructors
     [<Struct>]
-    type BookStructure(title: string, pages: int) =
+    type BookStruct(title: string, pages: int) =
         member this.Title = title
         member this.Pages = pages
 
         override this.ToString() =
             $"Title: {this.Title}, Pages: {this.Pages}"
+
+    // Create an instance of the struct using the constructor
+    let book1 = BookStruct("Philosopher's stone", 309)
+
+    // Create an instance using the defualt constructor
+    let namelessBook = BookStruct()
+    // val namelessBook: BookStruct = Title: , Pages: 0
+
+
+    // To create a mutable struct you must explicitly declare each mutable field as a `val` aand add the 4
+    // `[<DefaultValue>] attribute, then the instance of the strcuk must be declare mutable
+
+    // Define a struct with mutable fields
+    [<Struct>]
+    type MPoint =
+        val mutable X : int
+        val mutable Y : int
+
+        override this.ToString() =
+            $"{{%d{this.X}, %d{this.Y}}}"
+
+
+    let mutable pt1 = MPoint()
+
+    // Update the fields
+    pt1.X <- 10
+    pt1.Y <- 7
+
+    pt1
