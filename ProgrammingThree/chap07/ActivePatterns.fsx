@@ -123,8 +123,8 @@ module PartialActivePatterns =
 
     let describeString str =
         match str with
-        | ToBool b -> printfn $"{str} is a bool with a value of %b{b}"
-        | ToInt i -> printfn $"{str} is an int with a value of %d{i}"
+        | ToBool  b -> printfn $"{str} is a bool with a value of %b{b}"
+        | ToInt   i -> printfn $"{str} is an int with a value of %d{i}"
         | ToFloat f -> printfn $"{str} is a float with a value of %f{f}"
         | _         -> printfn $"{str} is not a bool int, or float"
 
