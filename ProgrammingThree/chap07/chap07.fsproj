@@ -8,6 +8,8 @@
   <ItemGroup>
     <None Include="ActivePatterns.fsx" />
     <None Include="UsingModules.fsx" />
+    <None Include="MasteringLists.fsx" />
+    <None Include="TailRecursion.fsx" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
