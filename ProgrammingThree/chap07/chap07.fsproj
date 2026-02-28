@@ -6,10 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="ActivePatterns.fsx" />
+	<None Include="ActivePatterns.fsx" />
     <None Include="UsingModules.fsx" />
     <None Include="MasteringLists.fsx" />
     <None Include="TailRecursion.fsx" />
+	<None Include="ProgrammingWithFunctions.fsx" />
+	<None Include="FunctionalPattern.fsx" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
