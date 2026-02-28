@@ -1,4 +1,4 @@
-﻿module FuntionalPatterns
+﻿module FunctionalPatterns
 
 module Memoization =
 
@@ -49,18 +49,18 @@ module Memoization =
 
 
 
-module MutableFunctionFalues =
+module MutableFunctionValues =
 
     // Example 7-21. Using mutable function values
-    // shows how you can change out the implementation of the generateWidg
-    // et function on the fly
+    // shows how you can change out the implementation of the generateWidget
+    // function on the fly
 
 
     // Code to produce Widgets, the backbone of all .NET applications
     type Widget =
         | Sprocket of string * int
         | Cog of string * float
-    
+
     let mutable generateWidget =
         let count = ref 0
         (fun () -> count.Value <- count.Value + 1
@@ -71,17 +71,17 @@ module MutableFunctionFalues =
     generateWidget()
     //val it: Widget = Sprocket ("Model A1", 1)
 
-    // .. and another
+    // ... and another
     generateWidget()
     //val it: Widget = Sprocket ("Model A1", 2)
-    
+
     // Now  update the function ...
     generateWidget <-
         let count = ref 0
         (fun () -> count.Value <- count.Value + 1
                    Cog( (sprintf $"Version 0x%x{count.Value}"), 0.0))
 
- 
+
     // Produce another Widget - with the updated function
     generateWidget()
     //val it: Widget = Cog ("Version 0x1", 0.0)
@@ -89,9 +89,28 @@ module MutableFunctionFalues =
     // ... and another
     generateWidget()
     //val it: Widget = Cog ("Version 0x2", 0.0)
-    
+
 
 
 module LazyProgramming =
 
-    ()
+    // * Reduced memory usage *
+
+    // Example 7-22. Lazy type
+    // defines a binary tree where the nodes are evaluated lazily
+    type LazyBinTree<'a> =
+        | Node of 'a * LazyBinTree<'a> Lazy * LazyBinTree<'a> Lazy
+        | Empty
+
+    let rec map fn tree =
+        match tree with
+        | Empty  -> Empty
+        | Node(x, l, r) ->
+            Node(fn x,
+                 Lazy(let lfNode = l.Value
+                      map fn lfNode),
+                 Lazy(let rtNode = r.Value
+                      map fn rtNode)
+            )
+
+        // * Abstracting data access *

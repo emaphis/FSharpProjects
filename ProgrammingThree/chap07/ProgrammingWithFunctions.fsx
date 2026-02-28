@@ -1,4 +1,4 @@
-﻿module PrgrammingWithFunctions
+﻿module ProgrammingWithFunctions
 
 module PartialApplication =
 
@@ -11,7 +11,7 @@ module PartialApplication =
 
     let list2  =
         List.map (fun x -> f x) lst
-    
+
     //val list2: int list = [2; 3; 4; 5; 6]
 
     // This can be simplified as
@@ -22,14 +22,14 @@ module PartialApplication =
     //val list3: int list = [2; 3; 4; 5; 6]
 
 
-    // * eliminating Reduncant Code
+    // * eliminating Redundant Code
 
     [<Measure>]
     type usd
 
     type Entree = { Name: string; Price: float<usd>; Calories: int }
 
-    // Picks the cheapest item on the menue
+    // Picks the cheapest item on the menu
     let pickCheapest menuItems =
         List.reduce
             (fun acc item ->
@@ -44,32 +44,32 @@ module PartialApplication =
                         then item
                         else acc) menuItem
 
-    
+
     // Factor out the comparison code
     let private pickItem cmp menuItems  =
         let reduceFunc acc item =
             match cmp acc item with
             | true  -> acc
             | false -> item
-        
+
         List.reduce reduceFunc menuItems
 
     let pickCheapest2 = pickItem (fun acc item -> item.Price > acc.Price)
     let pickHealthiest2 = pickItem (fun acc item -> item.Calories > acc.Calories)
 
-    
+
     let items =
         [ { Name = "cheese"; Price = 3.20<usd>; Calories = 200 }
           { Name = "bacon"; Price = 4.00<usd>; Calories = 250 }
-          { Name = "letticc"; Price = 2.00<usd>; Calories = 50 } ]
+          { Name = "lettuce"; Price = 2.00<usd>; Calories = 50 } ]
 
     let cheap = pickCheapest2 items
     let heathy = pickHealthiest2 items
 
 
 module Closures =
-    
-    // Closes over i   
+
+    // Closes over i
     let mult i lst =
         List.map (fun x -> x * i) lst
 
@@ -80,7 +80,7 @@ module Closures =
     // Example 7-18. Data encapsulation via closures
 
     // Data type for a set. Notice the implementation is
-    // stored in record fields..
+    // stored in record fields...
 
     type Set =
         { // Add an item to the set
