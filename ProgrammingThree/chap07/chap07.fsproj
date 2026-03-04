@@ -12,6 +12,7 @@
     <None Include="TailRecursion.fsx" />
 	<None Include="ProgrammingWithFunctions.fsx" />
 	<None Include="FunctionalPattern.fsx" />
+    <None Include="FunctionalData.fsx" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
