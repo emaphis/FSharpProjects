@@ -611,7 +611,7 @@ module ConstructingAndUsingAClass =
     // In the case when you are creating a class that implements `IDisposible`, you will
     // get a compiler warning if you do not use new.
 
-    let sr1 = System.IO.StringReader("")
+    let sr1 = new System.IO.StringReader("")
     // warning FS0760: It is recommended that objects supporting the IDisposable interface
     // are created using the syntax 'new Type(args)',
 
