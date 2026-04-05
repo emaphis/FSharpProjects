@@ -10,9 +10,10 @@ module ConversionUtils =
 module ConvertBase =
 
     // Utilities.ConversionUtils.ConvertBase.convertToHex
-    let convertToHex x = sprintf "%x" x
+    let convertToHex x = $"%x{x}"
+
     // Utilities.ConversionUtils.ConvertBase.convertToOct
-    let convertToOct x = sprintf "%o" x
+    let convertToOct x = $"%o{x}"
 
 module DataTypes =
     // Utilities.DataTypes.Point

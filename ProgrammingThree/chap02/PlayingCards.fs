@@ -1,4 +1,4 @@
-﻿ // Example 2-9 - defines several types inside of two namespaces.
+﻿ // Example 2-9 - defines several types inside two namespaces.
 
 namespace PlayingCards
 

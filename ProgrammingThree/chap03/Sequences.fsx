@@ -17,13 +17,13 @@ module LazyEvaluation =
     //val x: Lazy<int> = Value is not created.
     //val y: Lazy<int> = Value is not created.
 
-    // Directly requesting y's value will forc its evaluation
+    // Directly requesting y's value will force its evaluation
     let num1 = y.Value
     //Evaluating y...
     //Evaluating x ...
     //val num1: int = 20
 
-    // Accessing y's value agains will be used a cache value.
+    // Accessing y's value again will be used as a cache value.
     let num2 = y.Value
     //val num1: int = 20
 
@@ -37,7 +37,7 @@ module Sequences =
 
     do seqOfNumbers |> Seq.iter (printfn "%d")
 
-    // Sequences are lzay
+    // Sequences are lazy
 
     //  Example 3-11. A sequence of all integers
 
@@ -50,14 +50,14 @@ module Sequences =
     allPositiveIntsSeq
     //val it: int seq = seq [1; 2; 3; 4; ...]
 
-    // List of all possitive interegers
+    // List of all positive integers
     //let allPositiveInts = [ for i in 1 .. System.Int32.MaxValue -> i ]
     // fails
 
 
 module SequenceExpressions =
 
-    // Use similar syntax as list comprehensions as list comprehenstions
+    // Use similar syntax as list comprehensions as list comprehensions
 
     let alphabet = seq { for ch in 'A' .. 'Z' -> ch }
 
@@ -152,7 +152,7 @@ module AggregateOperators =
 
     //Seq.iter
     //val it: (('a -> unit) -> 'a seq -> unit)
-    // Iterates through each item in teh sequence producing sied effecting opperations
+    // Iterates through each item in teh sequence producing side effecting operations
 
     // Print odd numbers under 10
     let oddsUnderN n = seq { for i in 1 .. 2 .. n -> i }
@@ -163,14 +163,14 @@ module AggregateOperators =
     //val it: (('a -> 'b) -> 'a seq -> 'b seq)
 
     // Sequence of words (Arrays are compatible with sequences)
-    let words = "The wuick brown fox jumped over the lazy dog".Split( [| ' ' |])
+    let words = "The quick brown fox jumped over the lazy dog".Split( [| ' ' |])
     //val words: string array =
-    //      [|"The"; "wuick"; "brown"; "fox"; "jumped"; "over"; "the"; "lazy"; "dog"|]
+    //      [|"The"; "quick"; "brown"; "fox"; "jumped"; "over"; "the"; "lazy"; "dog"|]
 
     // Map string to string, length tuples
     let tuples = words |> Seq.map (fun word -> word, word.Length)
     do printfn $"%A{tuples}"
-    //seq [("The", 3); ("wuick", 5); ("brown", 5); ("fox", 3); ...]
+    //seq [("The", 3); ("quick", 5); ("brown", 5); ("fox", 3); ...]
 
 
     // Seq.fold

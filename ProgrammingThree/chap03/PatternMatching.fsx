@@ -144,7 +144,7 @@ module GroupingPatterns =
 
 
 
-module MachingStructureData =
+module MatchingStructureData =
 
     // Tuples
 
@@ -180,7 +180,7 @@ module MachingStructureData =
 
 module OutsideMatchExpressions =
 
-    // Pattern  matching can occure thoughout the F# language
+    // Pattern  matching can occur throughout the F# language
 
     // let bindings
 
@@ -213,7 +213,7 @@ module OutsideMatchExpressions =
     // Function parameters
     // ... are pattern matches too.
 
-    /// Gien a tuple of option values, return their sum
+    /// Given a tuple of option values, return their sum
     let addOptionValues = fun (Some x, Some y) -> x + y
 
     let sum = addOptionValues (Some 3, Some 4)
@@ -221,7 +221,7 @@ module OutsideMatchExpressions =
 
 
 
-module AlternateLambdaSyntaz =
+module AlternateLambdaSyntax =
 
     // It’s common to pass the parameter directly into a pattern-match expression,
 

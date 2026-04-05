@@ -25,14 +25,14 @@ let lst1 = [ 1; 2; 3 ]
 //val lst1: int list = [1; 2; 3]
 
 
-// option tupe
+// option tuple
 let opt1 = Some(3)
 //val opt1: int option = Some 3
 
 
 
 // Unit
-// A value signafiying noting
+// A value signifying noting
 
 let xu = ()
 //val xu: unit = ()
@@ -40,7 +40,7 @@ let xu = ()
 ()
 //val it: unit = ()
 
-// A functions return something, if a function doesn't conceptially returnt something 
+// A functions return something, if a function doesn't conceptually return something
 // like 'printfn' return a unit '()'
 
 let square x = x * x
@@ -50,7 +50,7 @@ ignore (square 4)
 
 
 // Tuples
-// ordered collection of data, to easlily clump together data as a unit.
+// ordered collection of data, to easily clump together data as a unit.
 
 let dinner = "green eggs", "ham"
 //val dinner: string * string = ("green eggs", "ham")
@@ -85,7 +85,7 @@ let x, y, z = snacks
 y, z
 //val it: string * string = ("Cookies", "Candy")
 
-// passing tupels a parameter
+// passing tuples a parameter
 
 let add x y = x + y
 //val add: x: int -> y: int -> int
@@ -105,13 +105,13 @@ let vowels = [ 'a'; 'e'; 'i'; 'o'; 'u' ]
 let emptyList = []
 
 
-// primative operators
+// primitive operators
 
 // cons
-let sometimes = 'y' :: vowels 
+let sometimes = 'y' :: vowels
 //val sometimes: char list = ['y'; 'a'; 'e'; 'i'; 'o'; 'u']
 
-// applend '@'
+// append '@'
 let odds = [ 1; 3; 5; 7; 9 ]
 let evens = [ 2; 4; 6; 8; 10 ]
 
@@ -133,7 +133,7 @@ let countdown = [ 5L .. -1L .. 0L ]
 
 // List comprehensions
 
-// Simple list comprehensin
+// Simple list comprehension
 let numbersNear x =
     [
         yield x - 1
@@ -151,7 +151,7 @@ let x4 =
        for i in 1 .. 10 do
             if i % 2 = 0 then
                 yield negate i
-            else 
+            else
                 yield i ]
 //val x4: int list = [1; -2; 3; -4; 5; -6; 7; -8; 9; -10]
 
@@ -271,7 +271,7 @@ List.iter
 // Example 2-7. Using List.iter to print numbers in a list
 
 
-let printNumber x = printfn "Printing %d" x
+let printNumber x = printfn $"Printing %d{x}"
 
 do List.iter printNumber [1..5]
 
@@ -284,8 +284,8 @@ do List.iter printNumber [1..5]
 open System
 
 /// tries to parse an integer using the Int32.TryParse function.
-/// If the parsing is successful, the function will return Some(re
-/// sult); otherwise it will return None.
+/// If the parsing is successful, the function will return Some(result);
+/// otherwise it will return None.
 let isInteger (str : string) =
     let successful, result = Int32.TryParse(str)
     if successful then Some result
@@ -328,7 +328,7 @@ let mountain = "K2"
 let height = 8611
 let units = 'm'
 
-do printfn "%s is %d%c high" mountain height units
+do printfn $"%s{mountain} is %d{height}%c{units} high"
 //K2 is 8611m high
 //val it: unit = ()
 
@@ -341,11 +341,11 @@ do printfn "%s is %d%c high" mountain height units
 
 // types of this function are inferred from the format specifiers
 let inferParams x y z =
-    printfn "x = %f, y = %s, z = %b"
+    printfn $"x = %f{x}, y = %s{y}, z = %b{z}"
 //val inferParams: x: 'a -> y: 'b -> z: 'c -> (float -> string -> bool -> unit)
 
 // `sprintf` is used when you need the result of the formatting as a string
 let location = "World"
 
-let greeting = sprintf "Hello, %s" location
+let greeting = $"Hello, %s{location}"
 //val greeting: string = "Hello, World"

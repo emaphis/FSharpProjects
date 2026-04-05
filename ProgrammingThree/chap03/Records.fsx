@@ -14,7 +14,7 @@ do printfn $"{steve.First} is {steve.Age} years old"
 
 module CloningRecords =
 
-    // Records can be clonew using the `with` keyword:
+    // Records can be cloned using the `with` keyword:
 
     type Car =
         {
@@ -51,12 +51,12 @@ module PatternMatching =
 module TypeInference =
 
     // .NET classes must be annotated it be used but record types can be
-    // infered by field name
+    // inferred by field name
 
     // Example 3-9. Type inference for records
     type Point = { X : float; Y : float }
 
-    // Distance between two points. (No type annotations requred)
+    // Distance between two points. (No type annotations required)
     let distance1 pt1 pt2 =
         let square x = x * x
         sqrt <| square (pt1.X - pt2.X) + square (pt1.Y - pt2.Y)
@@ -67,13 +67,13 @@ module TypeInference =
     //val dist: float = 14.14213562
 
 
-    // Type inference for recoreds with identicle field names
+    // Type inference for records with identical field names
 
     //type Point   = { X: float; Y: float;}
     type Vector3 = { X : float; Y : float; Z : float }
 
     // Provide a type annotation to not infer pt1 and pt2 to be Vector3
-    // (since Vector3 was defined last witht fields X and Y)
+    // (since Vector3 was defined last with fields X and Y)
     let distance2 (pt1: Point) (pt2: Point) =
         let square x = x * x
         sqrt <| square (pt1.X - pt2.X) + square (pt1.Y - pt2.Y)

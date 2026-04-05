@@ -1,6 +1,4 @@
-﻿
-
-// Organizing FSharp Code.
+﻿// Organizing FSharp Code.
 
 // modules
 

@@ -2,7 +2,7 @@
 
 let square x = x * x
 
-let sqr1 = square 4 
+let sqr1 = square 4
 //val sqr1: int = 16
 
 let addOne x = x + 1
@@ -19,7 +19,7 @@ let add2 = add 1 2
 
 // Type Inference
 
-//let add3 = add 1.0 2.0 
+//let add3 = add 1.0 2.0
 //Functions.fsx(22,16): error FS0001: This expression was expected to have type
 //    'int'
 //but here has type
@@ -68,8 +68,8 @@ let functionB x =
     let functionValue = 20
     x + functionValue
 
-//functionValue // 
-//  error FS0039: The value or constructor 'functionValue' is not defined. 
+//functionValue //
+//  error FS0039: The value or constructor 'functionValue' is not defined.
 
 // Nested functions
 let moduleValue' = 1
@@ -106,7 +106,7 @@ let hardDriveSize = bytesToGB  268435456000I
 // If statements
 let printGreeting shouldGreet greeting =
     if shouldGreet then
-        printfn "%s" greeting
+        printfn $"%s{greeting}"
 
 do printGreeting true "Hello!"
 //Hello!

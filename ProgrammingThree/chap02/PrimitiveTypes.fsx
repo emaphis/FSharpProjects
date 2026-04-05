@@ -129,10 +129,10 @@ let right1 = 0b1000 >>> 3
 
 let vowels = ['a'; 'e'; 'i'; 'o'; 'u']
 
-printfn "hex u0061 = '%c'" '\u0061'
+printfn $"hex u0061 = '%c{'\u0061'}'"
 //hex u0061 = 'a'
 
-// Convert value of 'C; to an integer
+// Convert value of 'C'; to an integer
 let int1 = int 'C'
 //val int1: int = 67
 
@@ -210,13 +210,13 @@ printTruthTable (||)
 //       +-------+-------+
 
 
-// Conparison and Equality
+// Comparison and Equality
 
 let lessThan1 = 1 < 2
 //val lessThan1: bool = true
 
-let lessThamOrEqualTo = 4.0 <= 4.0
-//val lessThamOrEqualTo: bool = true
+let lessThanOrEqualTo = 4.0 <= 4.0
+//val lessThanOrEqualTo: bool = true
 
 let greaterThan = 1.4E3 > 1.0e2
 //val greaterThan: bool = true

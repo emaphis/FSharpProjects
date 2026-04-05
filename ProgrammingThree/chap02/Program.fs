@@ -2,7 +2,7 @@
 open System
 
 [<EntryPoint>]
-let main (args : string[])=
+let main (_ : string[])=
     let numbers = [1..10]
     let square x = x * x
 
