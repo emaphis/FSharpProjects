@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "chap01": {
+      "commandName": "Project",
+      "commandLineArgs": "gooday goose"
+    }
+  }
+}

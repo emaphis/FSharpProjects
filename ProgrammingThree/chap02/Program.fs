@@ -8,7 +8,7 @@ let main (args : string[])=
 
     let squaredNumbers = List.map square numbers
 
-    printfn "SquaredNumbrs = %A" squaredNumbers
+    printfn $"SquaredNumbers = %A{squaredNumbers}"
 
     printfn "(press any key to continue)"
     Console.ReadKey(true) |> ignore
