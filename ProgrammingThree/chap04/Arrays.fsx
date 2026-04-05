@@ -14,10 +14,7 @@ let perfectSquares2 =  [| 1; 4; 9; 16; 25; 36; 49; 64; 81 |]
 module IndexingAnArray =
 
     printfn
-        "The first three perfect squares are %d, %d, and %d "
-        perfectSquares[0]
-        perfectSquares[1]
-        perfectSquares[2]
+        $"The first three perfect squares are %d{perfectSquares[0]}, %d{perfectSquares[1]}, and %d{perfectSquares[2]} "
     //The first three perfect squares are 1, 4, and 9
 
 
@@ -82,7 +79,7 @@ module ArraySlices =
 
     open System
 
-    let daysOfWeek = Enum.GetNames (typedefof<DayOfWeek>)
+    let daysOfWeek = Enum.GetNames typedefof<DayOfWeek>
 
     // Standard array slice, elements 2 through 4
     let wkDays = daysOfWeek[ 2 .. 4 ]
@@ -93,10 +90,10 @@ module ArraySlices =
     //val endDays: string array = [|"Thursday"; "Friday"; "Saturday"|]
 
     // Just specify an upper bound, elements 0 to 2
-    let begDays = daysOfWeek.[..2]
+    let begDays = daysOfWeek[..2]
     //val it: string array = [|"Sunday"; "Monday"; "Tuesday"|]
 
-    // Specify no bounds, get all of the elements, just copyy yhr attay
+    // Specify no bounds, get all the elements, just copyy yhr attay
     let allDays = daysOfWeek[*]
     //val allDays: string array =
     //  [|"Sunday"; "Monday"; "Tuesday"; "Wednesday"; "Thursday"; "Friday";
@@ -109,7 +106,7 @@ module CreatingArrays =
 
     open System
 
-    // Intialize an aray of win-wav elements
+    // Initialize an aray of win-wav elements
     let divisions = 4.0
     let twoPi = 2.0 * Math.PI
 
@@ -133,13 +130,13 @@ module PatternMatching =
         match arr with
         | null              -> "The array is null"
         | [| |]             -> "The array is empty"
-        | [| x |]           -> sprintf "The array has one element, %A" x
-        | [| x; y |]    -> sprintf "The array has two elements, %A and %A" x y
-        | a     -> sprintf "Thge array had %d elements, %A" a.Length a
+        | [| x |]           -> $"The array has one element, %A{x}"
+        | [| x; y |]    -> $"The array has two elements, %A{x} and %A{y}"
+        | a     -> $"The array had %d{a.Length} elements, %A{a}"
     //val describeArray: arr: 'a array -> string
 
     let desc0 = describeArray null
-    //val desc1: string = "Thge array had 4 elements, [|1; 2; 3; 4|]"
+    //val desc1: string = "The array had 4 elements, [|1; 2; 3; 4|]"
 
     let desc1 = describeArray [| |]
     //val desc1: string = "The array is empty"
@@ -169,7 +166,7 @@ module ArrayModuleFunctions =
     // Simple Boolean function
     let isGreaterThanTen x = (x > 10)
 
-    // Partioninf arrays
+    // Partition in arrays
     let partitions1 =
         [| 5; 5; 6; 20; 1; 3; 7; 11 |]
         |> Array.partition isGreaterThanTen
@@ -205,9 +202,9 @@ module ArrayModuleFunctions =
 module MultidimensionalArrays =
 
     let identityMatrix : float[,] = Array2D.zeroCreate 3 3
-    identityMatrix.[0,0] <- 1.0
-    identityMatrix.[1,1] <- 1.0
-    identityMatrix.[2,2] <- 1.0
+    identityMatrix[0,0] <- 1.0
+    identityMatrix[1,1] <- 1.0
+    identityMatrix[2,2] <- 1.0
 
     //identityMatrix
     //val it: float array2d = [[1.0; 0.0; 0.0]

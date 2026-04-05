@@ -2,7 +2,7 @@
 
 module Inheritance
 
-    // Provides type based polymorphism - the heart of Object Oriented programming
+    // Provides type based polymorphism - the heart of Object-Oriented programming
 
 module Example1 =
 
@@ -215,7 +215,7 @@ module Casting =
 
     // Dynamic cast  - Back up the hierarchy tree
 
-    //let steveobject = steve :> obj
+    //let steveAsObject = steve :> obj
     let steveAsDog2 = steveAsObj :?> Dog
 
     let desc = steveAsDog2.Description

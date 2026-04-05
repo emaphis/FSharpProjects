@@ -2,7 +2,7 @@
 
 module MethodsAndProperties
 
-    // The user interface to classes are provided by methods and properites
+    // The user interface to classes are provided by methods and properties
 
 module Properties =
 
@@ -27,7 +27,7 @@ module Properties =
     do bottle.Amount <- 1000.0<ml>
     let bool2 = bottle.Empty  // false
     let amt = bottle.Amount
-    do printfn $"Ammount = %f{amt}"
+    do printfn $"Amount = %f{amt}"
 
 
 module Methods =
@@ -43,7 +43,7 @@ module Methods =
             printfn "Tuning on .."
             this.m_turnedOn <- true
 
-        member this.TrunOff() =
+        member this.TurnOff() =
             printfn "Turning off..."
             this.m_turnedOn <- false
 
@@ -215,9 +215,9 @@ module AccessibilityModifiersOnModules =
 
 module FSharpSignatureFile =
     // File.fsi - signature file
-    // File.fs  - implementation faile
+    // File.fs  - implementation file
     // Program.fs - use
-    
+
     open MyProject.Utilities
     let internal mClass = MyClass()
     let prop1 = mClass.Property1

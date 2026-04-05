@@ -6,7 +6,7 @@
 
         // Using `failwith`
         let divide x y =
-            if y = 0 then failwithf "Cannot divide %d by zero!" x
+            if y = 0 then failwithf $"Cannot divide %d{x} by zero!"
             x / y
 
         let bum1 = divide 10 0
@@ -132,7 +132,7 @@
                 if not <| isFullMoon(DateTime.Today) then
                     raise <| NoFullMoon(DateTime.Today.Month, DateTime.Today.Day)
 
-                // Begin the incatation ...
+                // Begin the incantation ...
                 let mana =
                     ingredients
                     |> Seq.map (fun ing -> ing.GetHashCode())
@@ -148,7 +148,7 @@
             | BadMojo(msg)
                 -> $"Error: Hex failed due to bad mojo [%s{msg}]"
 
-        let ingredients = new HashSet<string>()
+        let ingredients = HashSet<string>()
         ingredients.Add("grapes")
         ingredients.Add("Toad Wart")
         ingredients.Add("Cherries")

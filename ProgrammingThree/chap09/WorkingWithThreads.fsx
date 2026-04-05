@@ -9,7 +9,7 @@ module SpawningThreads =
 
     open System.Threading
 
-    // What will execute on each thread
+    /// What will execute on each thread
     let threadBody() =
         for i in 1 .. 5 do
             // Wait 1/10 of a second
@@ -31,7 +31,7 @@ module TheNETThreadPool =
 
     open System.Threading
 
-    ThreadPool.QueueUserWorkItem(fun _ -> for i = 1 to 5 do printfn $"%d{i}")
+    let bool1 = ThreadPool.QueueUserWorkItem(fun _ -> for i = 1 to 5 do printfn $"%d{i}")
 
     // Our thread pool task, note that the delegate's
     // parameter is of type obj
@@ -39,7 +39,7 @@ module TheNETThreadPool =
         for i = 1 to (max :?> int) do
             printfn $"%d{i}"
 
-    ThreadPool.QueueUserWorkItem(WaitCallback(printNumbers), box 5)
+    let bool2 = ThreadPool.QueueUserWorkItem(WaitCallback(printNumbers), box 5)
 
 
 module SharingData =
@@ -157,5 +157,5 @@ module SharingData =
     let trn1 = ThreadPool.QueueUserWorkItem(fun _ -> transferFunds 100 john jane)
     let trn2 = ThreadPool.QueueUserWorkItem(fun _ -> transferFunds 100 jane john)
 
-    john
-    jane
+    printfn $"{john}"
+    printfn $"{jane}"

@@ -10,7 +10,9 @@ module WhileLoops =
     let mutable i = 0
     while i < 5 do
         i <- i + 1
-        printfn "i = %d" i ;;
+        printfn $"i = %d{i}"
+
+;;
 
     // i = 1
     // i = 2
@@ -28,7 +30,7 @@ module ForLoops =
 
     // For loops
     for i = 1 to 5 do
-        printfn "i = %d" i
+        printfn $"i = %d{i}"
 
     // i = 1
     // i = 2
@@ -40,7 +42,7 @@ module ForLoops =
 
     // Counting down
     for i = 5 downto 1 do
-        printfn "i = %d" i
+        printfn $"i = %d{i}"
 
     // i = 5
     // i = 4
@@ -53,7 +55,7 @@ module ForLoops =
 
     // Loop through sequences
     for i in [ 1 .. 5 ] do
-        printfn "i = %d" i
+        printfn $"i = {i}"
 
     // i = 1
     // i = 2
@@ -74,7 +76,8 @@ module ForLoops =
 
     // Print famous dogs, (waring due to incomplete match )
     for Dog(name) in famousPets do
-        printfn "%s was a famous dog." name
+        printfn $"%s{name} was a famous dog."
+
 
     // Lassie was a famous dog.
     // Rin Tin Tin was a famous dog.

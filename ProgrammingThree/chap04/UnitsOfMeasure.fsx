@@ -1,9 +1,9 @@
 ﻿module UnitsOfMeasure
 
 [<Measure>]
-type fahrenheit
+type Fahrenheit
 
-let printTemperature (temp : float<fahrenheit>) =
+let printTemperature (temp : float<Fahrenheit>) =
     if temp < 32.0<_>  then
         printfn "Below Freezing!"
     elif temp < 65.0<_>  then
@@ -16,21 +16,21 @@ let printTemperature (temp : float<fahrenheit>) =
         printfn "Scorching"
 
 
-let seattle = 59.0<fahrenheit>
+let seattle = 59.0<Fahrenheit>
 
 do printTemperature seattle
 //Cold
 
 [<Measure>]
-type celsius
+type Celsius
 
-let cambridge = 18.0<celsius>
+let cambridge = 18.0<Celsius>
 
 // printTemperature cambridge
 //error FS0001: Type mismatch. Expecting a
-//  'float<fahrenheit>'
+//  'float<Fahrenheit>'
 //but given a
-//  'float<celsius>'
+//  'float<Celsius>'
 
 // Units of measure also can be compounded by multiplication or division.
 
@@ -113,7 +113,7 @@ module GenericUnitsOfMeasure =
 
     let squareMeter (x : float<m>) = x * x
     //val squareMeter: x: float<m> -> float<m ^
-    
+
     let genericSquare (x : float<_>) = x * x
     //val genericSquare: x: float<'u> -> float<'u ^ 2>
 

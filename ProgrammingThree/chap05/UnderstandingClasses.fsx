@@ -12,7 +12,7 @@ module ExplicitConstruction =
         val m_x : float
         val m_y : float
 
-        // Construcion 1 - Takes two parameters
+        // Construction 1 - Takes two parameters
         new (x, y) = { m_x = x; m_y = y }
 
         // Construction 2 - Takes no parameters
@@ -53,7 +53,7 @@ module ExplicitConstruction =
             // Initialize class fields
             { m_x = x; m_y = y }
             then
-                // Do any post processing
+                // Do any post-processing
                 printfn $"Initialized to [%f{this.m_x}, %f{this.m_y}]"
 
 
@@ -121,8 +121,8 @@ module GenericClasses =
 
     let arrayifyTuple = Arrayify<int * int>( (10, 27))
 
-    let arrytup1 = arrayifyTuple.ArraySize3
-    //val arrytup1: (int * int) array = [|(10, 27); (10, 27); (10, 27)|]
+    let arraytup1 = arrayifyTuple.ArraySize3
+    //val arraytup1: (int * int) array = [|(10, 27); (10, 27); (10, 27)|]
 
     let inferred = Arrayify<_>( "a string" )
 

@@ -15,7 +15,7 @@ let bool2 = isNull (null : string)
 type Thing = Plant | Animal | Mineral
 
 // Error: Thing can not be null
-let testThing thing = function
+let testThing  = function
     | Plant -> "Plant"
     | Animal -> "Animal"
     | Mineral -> "Mineral"
@@ -37,10 +37,10 @@ module ReferenceTypeAliasing =
 
     // If you modify the value of x...
     x[0] <- 3
-    // .. x will change
+    // ... x will change
     x
     //val it: int array = [|3|]
-    // .. so will y
+    // ... so will y
     y
     //val it: int array = [|3|]
 
@@ -75,7 +75,7 @@ module ReferenceCells =
 
 // allows you to store mutable data on the heap, enabling you to bypass limitations
 // with mutable values that are stored on the stack.
-// NOTE:  `:=` and `(!)` are deptrecated, use x.Value instead.
+// NOTE:  `:=` and `(!)` are deprecated, use x.Value instead.
 
     // ref
     // val it: ('a -> 'a ref)
@@ -104,11 +104,11 @@ module ReferenceCells =
     // Do this instead:
     planets.Value <- planets.Value |> List.filter (fun p -> p <> "Pluto")
 
-    do printfn "%A" planets
+    do printfn $"%A{planets}"
 
 
     // `decr` and `incr` decrement and increment int ref types.  Like `--` and `++`
-    // NOTE: `decr` and `incr` have been decremated
+    // NOTE: `decr` and `incr` have been decremented
 
     let x = ref 0
 
@@ -129,7 +129,7 @@ module MutableRecords =
     type MutableCar = { Make : string; Model : string; mutable Miles : int}
 
     let driveForASeason car =
-        let rng = new Random()
+        let rng = Random()
         car.Miles <- car.Miles + rng.Next() % 10000
 
 
@@ -140,4 +140,4 @@ module MutableRecords =
     do driveForASeason kitt
     do driveForASeason kitt
 
-    do printfn "kitt = %A" kitt
+    do printfn $"kitt = %A{kitt}"

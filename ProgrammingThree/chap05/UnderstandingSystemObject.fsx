@@ -1,6 +1,6 @@
 ﻿module UnderstandingSystemObject
 
-    // System.Object is the base of the CLR object syste4m.
+    // System.Object is the base of the CLR object system.
 
 module CommonMethods =
 
@@ -59,7 +59,7 @@ module ObjectEquality =
     let x = 42
     let y = 42
 
-    let bool1 = x = y    // equlity opperator in F#
+    let bool1 = x = y    // equality operator in F#
 
     // Referential equality
     // Example 5-1
@@ -122,7 +122,7 @@ module  GeneratedEquality =
     let bool4 = x1 = z1  // false
 
 
-    // Disciminated unions
+    // Discriminated unions
 
     type DUType =
         | A of int * char
@@ -145,7 +145,7 @@ module  GeneratedEquality =
         | B
 
 
-    // Declare two conceputally equal values
+    // Declare two conceptually equal values
     let x3 = A(4, 'A')
     let y3 = A(4, 'A')
 

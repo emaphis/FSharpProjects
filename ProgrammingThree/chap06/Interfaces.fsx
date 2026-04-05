@@ -16,7 +16,7 @@ module CanDo =
         abstract Eat : unit -> unit
         abstract Tastiness : Tastiness
 
-    // Protip: Eat one of these a day
+    // Pro-tip: Eat one of these a day
     type Apple() =
         interface IConsumable with
             member this.Eat (): unit =

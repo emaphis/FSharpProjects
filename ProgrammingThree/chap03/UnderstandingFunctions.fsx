@@ -5,8 +5,6 @@
 // g(x) = x + 1
 
 // translated to F#
-open System.Net.NetworkInformation
-
 let f x = x ** 2.0 + x
 let g x = x + 1.0
 
@@ -71,7 +69,7 @@ module FunctionValues =
         file.Close()
 
     //val appendFile: fileName: string -> text: string -> unit
-    
+
     do appendFile @"C:\temp\Log.txt" "Processing Event X..."
 
     // Create a new function, with a partially applied call to appendFile.
@@ -80,9 +78,9 @@ module FunctionValues =
 
     // Append text to 'C:\temp\Log.txt'
     appendLogFile "Processing Event Y..."
-    
+
     // Currying.
-    do List.iter (fun i -> printfn "%d" i) [1..3]
+    do List.iter (fun i -> printfn $"%d{i}") [1..3]
 
     // Using printfn applying the "%d" parameter, which returns a new
     // function with type int -> unit opposed to string -> int -> unit
@@ -90,7 +88,7 @@ module FunctionValues =
 
 
     // Functions returning functions
-    
+
     // Function returning functions
     let generatePowerOfFunc baseValue =
         (fun exponent -> baseValue ** exponent)
@@ -119,7 +117,7 @@ module RecursiveFunctions =
 
     let fact5 = factorial 5
     //val fact5: int = 120
-    
+
 
     /// Functional for loop
     let rec forLoop body times =
@@ -127,7 +125,7 @@ module RecursiveFunctions =
         else
             body()
             forLoop body (times - 1)
-    
+
     //val forLoop: body: (unit -> unit) -> times: int -> unit
 
     /// Functional while loop
@@ -170,8 +168,8 @@ module RecursiveFunctions =
 
 module SymbolicOperators =
 
-    //symbolic operator can be made up of any sequence of !%&*+-./<=>@^|? 
-    
+    //symbolic operator can be made up of any sequence of !%&*+-./<=>@^|?
+
     /// '!' as Factorial
     let rec (!) x =
         if x <= 1 then 1
@@ -181,7 +179,7 @@ module SymbolicOperators =
 
     let fact1 = !5
     //val fact1: int = 120
-    
+
 
     // Define (===) to compare strings based on regular expressions
 
@@ -204,13 +202,13 @@ module SymbolicOperators =
     // Multiply all the elements using the (*) symbolic function
     let num2 = List.fold (*) 1 [1..10]
     //val num2: int = 3628800
-    
+
     let minus = (-)
     //val minus: (int -> int -> int)
 
     let num3 = List.fold minus 10 [3; 3; 3]
     //val num3: int = 1
-    
+
 
 
 module FunctionComposition =
@@ -219,7 +217,7 @@ module FunctionComposition =
     open System.IO
 
     let sizeOfFolder1 folder =
-    
+
         // Get all the files under the path
         let fileInFolder : string [] =
             Directory.GetFiles(folder, "*.*",
@@ -227,7 +225,7 @@ module FunctionComposition =
 
         // Map those files to their corresponding FileInfo Object
         let fileInfos : FileInfo [] =
-            Array.map (fun (file : string) -> new FileInfo(file))
+            Array.map (fun (file : string) -> FileInfo(file))
                         fileInFolder
 
         // Map those FileInfo object to the file's size
@@ -240,7 +238,7 @@ module FunctionComposition =
 
         // Return the total size of the files
         totalSize
-    
+
     sizeOfFolder1 @"C:\temp"
     //val it: int64 = 8013936L
 
@@ -252,7 +250,7 @@ module FunctionComposition =
             (Array.map
             (fun (info : FileInfo) -> info.Length)
                  (Array.map
-                 (fun file -> new FileInfo(file))
+                 (fun file -> FileInfo(file))
                     (Directory.GetFiles(
                          folder, "*.*",
                          SearchOption.AllDirectories))))
@@ -273,20 +271,20 @@ module FunctionComposition =
 
 
     let sizeOfFolderPiped folder =
-        
+
         let getFiles path =
                 Directory.GetFiles(path, "*.*", SearchOption.AllDirectories)
 
         let totalSize =
             folder
             |> getFiles
-            |> Array.map (fun file -> new FileInfo(file))
+            |> Array.map (fun file -> FileInfo(file))
             |> Array.map (fun info -> info.Length)
             |> Array.sum
 
         totalSize
 
-    
+
     sizeOfFolderPiped @"C:\temp"
     //val it: int64 = 8_013_936L
 
@@ -297,10 +295,10 @@ module FunctionComposition =
     //val (>>) : f: ('a -> 'b) -> g: ('b -> 'c) -> x: 'a -> 'c
 
     let sizeOfFolderComposed =
-        
+
         let getFiles folder =
             Directory.GetFiles(folder, "*.*", SearchOption.AllDirectories)
-        
+
         // The result of this expression is a function that takes
         // one parameter, which will be passed to getFiles and piped
         // through the following functions.
@@ -308,42 +306,41 @@ module FunctionComposition =
         >> Array.map (fun file -> FileInfo(file))
         >> Array.map (fun info -> info.Length)
         >> Array.sum
-    
-    //val sizeOfFolderComposed: (string -> int64)    
-    
-    sizeOfFolderComposed @"C:\temp"    
+
+    //val sizeOfFolderComposed: (string -> int64)
+
+    sizeOfFolderComposed @"C:\temp"
     //val it: int64 = 8013936L
 
-    
+
     // Pipe-backward operator
-    
+
     //let (<|) f x = f x
     //val (<|) : f: ('a -> 'b) -> x: 'a -> 'b
-    
+
     do List.iter (printfn "%d") <| [1 .. 3]
-    
-    
+
+
     // Backward composition operator
-    
+
     //let (<<) f g x = f(g x)
     //val (<<) : f: ('a -> 'b) -> g: ('c -> 'a) -> x: 'c -> 'b
-    
+
     // Backward Composition
     let square x = x * x
     let negate x = -x
-    
+
     // Using (>>) negates the square
     let sq1 = (square >> negate) 10
     //val sq1: int = -100
-    
+
     // ** But what we really want is the square of the negation
     //    So we use (<<)
     let sq2 = (square << negate) 10
     //val sq2: int = 100
-    
+
     // Filtering lists
     [ [1]; []; [4;5;6]; [3;4]; []; []; []; [9] ]
     |> List.filter(not << List.isEmpty)
-    
+
     //val it: int list list = [[1]; [4; 5; 6]; [3; 4]; [9]]
- 

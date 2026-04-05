@@ -3,7 +3,7 @@
 module LazyEvaluation =
 
     // Lazy types
-    // A thunk of place holder for a future evaluation
+    // A thunk of placeholder for a future evaluation
     // `lazy` of `Lazy<_>.Create
 
     // Example 3-10. Using lazy evaluation
@@ -23,7 +23,7 @@ module LazyEvaluation =
     //Evaluating x ...
     //val num1: int = 20
 
-    // Accessing y's value agains will used a cahce value.
+    // Accessing y's value agains will be used a cache value.
     let num2 = y.Value
     //val num1: int = 20
 
@@ -81,7 +81,7 @@ module SequenceExpressions =
     //Yielding D...
     //Yielding E...
     //val fifthLetter: char = 'E'
- 
+
 
     // Example 3-12. Sequence for listing all files under a folder
 
@@ -112,15 +112,15 @@ module SeqModuleFunctions =
 
     let randomSequence =
         seq {
-            let rng = new Random()
+            let rng = Random()
             while true do
                 yield rng.Next()
-
         }
     //val randomSequence: int seq
 
     let rands =  randomSequence |> Seq.take 3
-    printf "%A" rands
+
+    printf $"%A{rands}"
     //seq [1661191131; 530481539; 1601451948]val rands: int seq
 
 
@@ -131,7 +131,7 @@ module SeqModuleFunctions =
     // Example 3-13. Using Seq.unfold
 
     // Generates the next element of the Fibonacci sequence give the previous
-    // tow elements. To be used with Seq.unfold
+    // two elements. To be used with Seq.unfold
 
     let nextFibUnder100 (a, b) =
         if a + b > 100 then None
@@ -144,7 +144,7 @@ module SeqModuleFunctions =
     //val fibsUnder100: int seq
 
     let fibList = Seq.toList fibsUnder100
-    do printfn "%A" fibList
+    do printfn $"%A{fibList}"
     //[1; 1; 2; 3; 5; 8; 13; 21; 34; 55; 89]
 
 
@@ -169,7 +169,7 @@ module AggregateOperators =
 
     // Map string to string, length tuples
     let tuples = words |> Seq.map (fun word -> word, word.Length)
-    do printfn "%A" tuples
+    do printfn $"%A{tuples}"
     //seq [("The", 3); ("wuick", 5); ("brown", 5); ("fox", 3); ...]
 
 

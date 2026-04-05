@@ -96,7 +96,7 @@ module WhenGuards =
     open System
 
     let highLowGame () =
-        let rng = new Random()
+        let rng = Random()
         let secretNumber = rng.Next() % 100
 
         let rec highLowGameStep () =
@@ -104,7 +104,7 @@ module WhenGuards =
             printfn "Guess the secret number:"
             let guessStr = Console.ReadLine()
             let guess = Int32.Parse(guessStr)
- 
+
             match guess with
             | _ when guess > secretNumber
                 -> printfn "The secret number is lower."
@@ -124,7 +124,7 @@ module WhenGuards =
         highLowGameStep();;
 
 //henGuards.highLowGame ()
- 
+
 
 module GroupingPatterns =
 
@@ -159,22 +159,22 @@ module MachingStructureData =
 
     // Lists
     // Example 3-6. Determining the length of a list
- 
+
     let rec listLength l =
         match l with
         | []        -> 0
         | [_]       -> 1
         | [_; _]    -> 2
         | [_; _; _] -> 3
-        | hd::tail -> 1 + listLength tail
+        | _ :: tail -> 1 + listLength tail
 
 
     // Options
 
     let describeOptions o =
         match o with
-        | Some(42) -> "The answer was 42, but what was thw question?"
-        | Some(x) -> sprintf $"The answer was {x}"
+        | Some 42 -> "The answer was 42, but what was thw question?"
+        | Some x -> $"The answer was {x}"
         | None -> "No answer was found"
 
 
@@ -209,14 +209,14 @@ module OutsideMatchExpressions =
     //val y4: int = 200
     //val x4: int = 100
 
- 
+
     // Function parameters
-    // .. are pattern matches too.
+    // ... are pattern matches too.
 
     /// Gien a tuple of option values, return their sum
-    let addOptionValues = fun (Some(x), Some(y)) -> x + y
+    let addOptionValues = fun (Some x, Some y) -> x + y
 
-    let sum = addOptionValues (Some(3), Some(4))
+    let sum = addOptionValues (Some 3, Some 4)
     //val sum: int = 7
 
 
@@ -234,7 +234,7 @@ module AlternateLambdaSyntaz =
         | _::tl  -> 1 + listLength tl
 
     // The 'function' keyword.
- 
+
     let rec funListLength =
         function
         | []        -> 0

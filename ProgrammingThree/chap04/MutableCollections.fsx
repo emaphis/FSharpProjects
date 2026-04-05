@@ -4,7 +4,7 @@
 
 module ListT =
 
-    // Create a List<_> of planetset
+    // Create a List<_> of planets
     open System.Collections.Generic
 
     let planets = List<string>()
@@ -57,17 +57,17 @@ module Dictionary =
     let printElement name =
         if periodicTable.ContainsKey(name) then
             let atom = periodicTable[name]
-            printfn"Atom with symbol with '%s' has weight %A" atom.Name atom.Weight
+            printfn $"Atom with symbol with '%s{atom.Name}' has weight %A{atom.Weight}"
         else
-            printfn "Error. No atom with name '%s' found." name
+            printfn $"Error. No atom with name '%s{name}' found."
 
     /// Alternate syntax to get a value. Return a tuple of 'success * result'
     let printElement2 name =
-        let (found, atom) = periodicTable.TryGetValue(name)
+        let found, atom = periodicTable.TryGetValue(name)
         if found then
-            printfn "Atom with symbol with '%s' has weight %A." atom.Name atom.Weight
+            printfn $"Atom with symbol with '%s{atom.Name}' has weight %A{atom.Weight}."
         else
-            printfn "Error. No atom with name '%s' found." name
+            printfn $"Error. No atom with name '%s{name}' found."
 
 
     do printElement "He"
@@ -83,12 +83,12 @@ module Hashset =
 
     open System.Collections.Generic
 
-    let bestPicture = new HashSet<string>()
+    let bestPicture = HashSet<string>()
 
     bestPicture.Add("The Artist")
     bestPicture.Add("The King's Speech")
     bestPicture.Add("The Hurt Locker")
-    bestPicture.Add("Slumdog Milionaire")
+    bestPicture.Add("Slumdog Millionaire")
     bestPicture.Add("No Country for Old Men")
     bestPicture.Add("The Departed")
 

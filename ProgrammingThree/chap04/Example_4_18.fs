@@ -19,24 +19,24 @@ let main (args: string[]) =
             // Does the drive exist?
             let matchingDrive =
                 Directory.GetLogicalDrives()
-                |> Array.tryFind(fun drivePatrh -> drivePatrh[0] = filePath[0])
+                |> Array.tryFind(fun drivePath -> drivePath[0] = filePath[0])
 
             if matchingDrive = None then
-                raise <| new DriveNotFoundException(filePath)
+                raise <| DriveNotFoundException(filePath)
 
             // Does the folder exist?
             let directory = Path.GetPathRoot(filePath)
             if not <| Directory.Exists(directory) then
-                raise <| new DirectoryNotFoundException(filePath)
+                raise <| DirectoryNotFoundException(filePath)
 
             // Does the file exist?
             if not <| File.Exists(filePath) then
-                raise <| new DirectoryNotFoundException(filePath)
+                raise <| DirectoryNotFoundException(filePath)
 
             let fileInfo = FileInfo(filePath)
             printfn "Created  = %s" <| fileInfo.CreationTime.ToString()
             printfn "Access   = %s" <| fileInfo.LastAccessTime.ToString()
-            printfn "Size     = %d" fileInfo.Length
+            printfn "Size     = %d" <| fileInfo.Length
 
             0
 
@@ -54,11 +54,11 @@ let main (args: string[]) =
             ->  printfn "Unhandled IOException: %s" ex.Message
                 4
 
-        // Us a wildcard match (ex will be of type System.Exception
+        // Use a wildcard match (ex will be of type System.Exception)
         | ex
             ->  printfn "Unhandled Exception: %s" ex.Message
                 5
 
     // return the exit code
-    printfn "Exiting with code %d" exitCode
+    printfn $"Exiting with code %d{exitCode}"
     exitCode
