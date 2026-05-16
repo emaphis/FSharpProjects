@@ -237,10 +237,10 @@ module UsingActivePatterns =
         if x.EndsWith(ext) then Some() else None
 
 
-    let (|KBInsize|MBInSize|GBInSize|) filePath =
+    let (|KBInSize|MBInSize|GBInSize|) filePath =
         let file = File.Open(filePath, FileMode.Open)
         if file.Length < 1024L * 1024L then
-            KBInsize
+            KBInSize
         elif file.Length < 1024L * 1024L * 1024L then
             MBInSize
         else
@@ -319,7 +319,7 @@ module UsingActivePatterns =
         doc.LoadXml(xmlText)
         doc
 
-    // Now parse the Xml document
+    // Now parse the XML document
     let parsed =
         xmlDoc.DocumentElement.ChildNodes
         |> Seq.cast<XmlElement>
