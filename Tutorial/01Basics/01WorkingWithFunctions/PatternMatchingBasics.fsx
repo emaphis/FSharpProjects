@@ -62,3 +62,35 @@ getPrice "banana"
 getPrice "apple"
 
 
+let getPriceTR taxRate = function
+    | "banana" -> 0.79 * (1.0 + taxRate)
+    | "watermelon" -> 3.49 * (1.0 + taxRate)
+    | "tofu" -> 1.09 * (1.0 + taxRate)
+    | _ -> nan (* nan is a special value meaning "not a number" *)
+
+getPriceTR 0.10 "tofu"
+getPriceTR 0.10 "banana"
+getPriceTR 0.10 "apple"
+
+
+// Binding Variables with Pattern Matching
+
+// F# can automatically bind values to identifiers if they match certain patterns. 
+let rec factorial = function
+    | 0 | 1 -> 1
+    | n -> n * factorial (n - 1)
+
+factorial 7
+
+
+// Using Guards within Patterns
+
+let sign = function
+    | 0  -> 0
+    | x when x < 0 -> -1
+    | x when x > 0 -> 1
+
+sign -55
+sign 108
+sign 0
+

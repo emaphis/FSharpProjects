@@ -6,8 +6,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="Program.fs"/>
+        <Compile Include="Program.fs" />
         <None Include="patternmatching.fsx" />
+        <None Include="01Basics\01WorkingWithFunctions\HigherOrderFunctions.fsx" />
+        <None Include="01Basics\01WorkingWithFunctions\Recursion.fsx" />
+        <None Include="01Basics\01WorkingWithFunctions\PatternMatchingBasics.fsx" />
         <None Include="01Basics\01WorkingWithFunctions\DeclaringValuesAndFunctions.fsx" />
     </ItemGroup>
 
