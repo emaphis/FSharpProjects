@@ -26,7 +26,7 @@ safediv 10 0
 
 let isFortyTwo = function
     | Some(42)  -> true
-    | Some(_) | None -> false
+    | Some _ | None -> false
 
 
 isFortyTwo (Some(43))

@@ -81,13 +81,13 @@ let sumOfDivisors n =
     loop start max minSum
 
 
-printfn "%d" (sumOfDivisors 10)
+printfn $"{sumOfDivisors 10}"
 (* prints 18, because the sum of 10's divisors is 1 + 2 + 5 + 10 = 18 *)
 
 
 // Generic Functions
 
-let giveMeAThree x = 3
+let giveMeAThree _ = 3
 // val giveMeAThree: x: 'a -> int
 
 let throwAwayFirstInput x y = y
@@ -99,6 +99,6 @@ throwAwayFirstInput "thrownAway" 10.0
 throwAwayFirstInput 5 30
 //val it: int = 30
 
-// Generic functions are strongly typed. 
+// Generic functions are strongly typed.
 let z'' = add 10 (throwAwayFirstInput "this is a string" 5)
 //val z'': int = 15

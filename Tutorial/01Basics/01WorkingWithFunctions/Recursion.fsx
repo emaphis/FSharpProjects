@@ -15,7 +15,7 @@ let rec fact x =
     if x < 1 then 1
     else x * fact (x - 1)
 
-(* 
+(*
     // can also be written using pattern matching syntax:
     let rec fact = function
         | n when n < 1 -> 1
@@ -92,5 +92,5 @@ let fib n =
         match i with
         | n when n=0I -> a
         | n when n=1I -> b
-        | n -> loop b (a + b) (i - 1I)
+        | _ -> loop b (a + b) (i - 1I)
     loop 0I 1I n

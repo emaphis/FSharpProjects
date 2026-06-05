@@ -21,9 +21,9 @@ let sign x =
 let passFive f = (f 5)
 // f: (int -> 'a) -> 'a
 
-printfn "%A" (passFive square) 
-printfn "%A" (passFive cube)
-printfn "%A" (passFive sign)
+printfn $"%A{passFive square}"
+printfn $"%A{passFive cube}"
+printfn $"%A{passFive sign}"
 
 
 // Creating a Map Function
@@ -84,7 +84,7 @@ Console.WriteLine(gof 1.0) // 4.5
 
 let inline (|>) x f = f x
 
-//let square x = x * x  
+//let square x = x * x
 let add x y = x + y
 let toString x = x.ToString()
 
