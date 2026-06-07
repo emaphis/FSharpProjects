@@ -86,7 +86,7 @@ let cl = [ 'a' .. 'f' ]
 // Alternative List Comprehension Syntax using '->'
 
 [ for a in 1 .. 5 -> a * a ]
-//[ for a in 1 .. 5 -> a * a]
+//[1; 4; 9; 16; 25]
 
 [ for a in 1 .. 5 do
   for b in 1 .. 3 -> a, b]
@@ -143,7 +143,7 @@ let filterTR predicate l =
         | hd :: tl ->
             match predicate hd with
             | true  -> loop (hd :: acc) tl
-            | false -> loop (acc) tl
+            | false -> loop acc tl
     List.rev (loop [] l)
 
 let filteredNumbers2 = [1 .. 10] |> filterTR (fun x -> x % 2 = 0)
@@ -212,8 +212,8 @@ let combined2 = List.append first second
 
 [1 .. 10] |> List.choose (fun x ->
     match x % 2 with
-    | 0 -> Some(x, x*x, x*x*x)
-    | _ -> None)                                                                                                      | _ -> None)
+    | 0 -> Some (x, x*x, x*x*x)
+    | _ -> None)
 //[(2, 4, 8); (4, 16, 64); (6, 36, 216); (8, 64, 512); (10, 100, 1000)]
 
 
@@ -247,6 +247,7 @@ let x2 = factorial 13I
 
 // Computing population standard deviation
 
+open System
 let stddev (input : float list) =
     let sampleSize = float input.Length
     let mean = (input |> List.fold ( + ) 0.0) / sampleSize
@@ -270,3 +271,57 @@ let findStringContaining2 (text: string) (items : string list) =
 findStringContaining "Papi" cities
 findStringContaining2 "Hastings" cities
 
+
+// Exercises
+
+//val pair : 'a list -> ('a * 'a) list
+
+let rec pair lst =
+    match lst with
+    | x :: [ y ] -> (x, y) :: []
+    | x :: y :: tl -> (x, y) :: pair tl
+    | _ -> []
+
+pair [ 1 .. 10 ]
+// pair [ 1 .. 10 ]
+pair [ "one"; "two"; "three"; "four"; "five" ]
+// [("one", "two"); ("three", "four")]
+
+let rec unpair lst =
+    match lst with
+    | [ (x, y) ] -> [x; y]
+    | (x, y) :: tl -> x :: y :: (unpair tl)
+    | []  -> []
+
+unpair [(1, 2); (3, 4); (5, 6)]
+// [1; 2; 3; 4; 5; 6]
+unpair [("one", "two"); ("three", "four")]
+// ["one"; "two"; "three"; "four"]
+
+
+let rec expand lst =
+    match lst with
+    | []  ->  []
+    | hd :: tl  -> (hd :: tl):: expand tl
+
+expand [ 1 .. 5 ]
+//[[1; 2; 3; 4; 5]; [2; 3; 4; 5]; [3; 4; 5]; [4; 5]; [5]]
+expand [ "monkey"; "kitty"; "bunny"; "rat" ]
+// [["monkey"; "kitty"; "bunny"; "rat"]; ["kitty"; "bunny"; "rat"];
+//  ["bunny"; "rat"]; ["rat"]]
+
+
+let rec gcd x y =
+    if y = 0 then x
+    else gcd y (x % y)
+
+let rec gcdl lst =
+    match lst with
+    | [x]  -> x
+    | x :: tl -> (gcd x (gcdl tl))
+    | []  -> 0
+
+gcdl [15; 75; 20]
+// 5
+gcdl [12; 24; 27; 30; 36]
+// 3
