@@ -49,9 +49,9 @@ for a in (Seq.take 5 allEvens) do
 // Iterating Through Sequences Manually
 
 open System
-open System.Collections
+//open System.Collections
 
-let evens = seq { 0 .. 2 .. 10 } 
+let evens = seq { 0 .. 2 .. 10 }
 
 let main1() =
     let evensEnumerator = evens.GetEnumerator()  // returns IEnumerator<int>
@@ -78,12 +78,14 @@ let thisworks = seq { for nm in [ Some("James"); None; Some("John") ] |> Seq.cho
 printfn $"this works = %A{thisworks}"
 //this works = seq [5; 4]
 
+
 // val distinct : seq<'T> -> seq<'T>
 // Returns a sequence that filters out duplicate entries.
 
 let dist = Seq.distinct (seq [1; 2; 2; 6; 3; 2])
 printfn $"dist = %A{dist}"
 // let dist = Seq.distinct (seq[1;2;2;6;3;2])
+
 
 // val exists : ('T -> bool) -> seq<'T> -> bool
 // Determines if an element exists in a sequence.
@@ -92,12 +94,14 @@ let equalsTwo x = x = 2
 let exist = Seq.exists equalsTwo (seq [3 .. 9])
 // false
 
+
 // val filter : ('T -> bool) -> seq<'T> -> seq<'T>
 // Builds a new sequence consisting of elements filtered from the input sequence.
 
 let evens' = Seq.filter (fun x-> x%2 = 0) (seq{0..9})
 printfn $"evens = %A{evens'}"
 // evens = seq [0; 2; 4; 6; ...]
+
 
 // val fold : ('State -> 'T -> 'State) -> 'State -> seq<'T> -> 'State
 // Repeatedly applies a function to each element in the sequence from left to right.
@@ -109,6 +113,51 @@ Seq.init 10 (fun index -> index * index)
 // The sum of the elements is 285.
 
 
+// val initInfinite : (int -> 'T) -> seq<'T>
+// Generates a sequence consisting of an infinite number of elements.
+
+let infinite = Seq.initInfinite (fun x -> x * x)
+let fiveSquares = Seq.take 5 infinite
+do printfn $"five squares = %A{fiveSquares}"
+//five squares = seq [0; 1; 4; 9; ...]
 
 
+// val map : ('T -> 'U) -> seq<'T> -> seq<'U>
+// Maps a sequence of type 'a to type 'b.
 
+let nums = Seq.map (fun x -> x * x + 2) (seq [3;5;4;3])
+do printfn $"nums = %A{nums}"
+//nums = seq [11; 27; 18; 11]
+
+
+// val item : int -> seq<'T> -> 'T
+// Returns the nth value of a sequence.
+
+let num1 = Seq.item 3 (seq {for n in 2..9 do yield n})
+// val num1: int = 5
+
+
+// val take : int -> seq<'T> -> seq<'T>
+// Returns a new sequence consisting of the first n elements of the input sequence.
+
+let nums3 = Seq.take 3 (seq {1..6})
+do printfn $"nums3 = %A{nums3}"
+//nums3 = seq [1; 2; 3]
+
+
+// val takeWhile : ('T -> bool) -> seq<'T> -> seq<'T>
+// Return a sequence that, when iterated, yields elements of the underlying sequence while the given predicate returns true, and returns no further elements.
+
+let sequence3 = Seq.takeWhile (fun elem -> elem < 10) (seq {for i in 0..20 do yield i+1})
+do printfn $"sequence3 = %A{sequence3}"
+//sequence3 = seq [1; 2; 3; 4; ...]
+
+
+// val unfold : ('State -> ('T * 'State) option) -> 'State seed -> seq<'T>
+// The opposite of fold: this function generates a sequence as long as the generator function returns Some.
+
+open System.Numerics
+
+let fibs = (0I, 1I) |> Seq.unfold (fun (a, b) -> Some(a, (b, a+b)))
+Seq.iter (fun x -> printf $"{x} ") (Seq.take 20 fibs)
+// 0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 val it: unit = ()
