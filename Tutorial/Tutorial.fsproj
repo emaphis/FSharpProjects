@@ -12,6 +12,7 @@
         <None Include="01Basics\02ImmutableDataStrucures\OptionTypes.fsx" />
         <None Include="01Basics\02ImmutableDataStrucures\Lists.fsx" />
         <None Include="01Basics\02ImmutableDataStrucures\Sequences.fsx" />
+        <None Include="01Basics\02ImmutableDataStrucures\SetsAndMaps.fsx" />
         <None Include="01Basics\01WorkingWithFunctions\HigherOrderFunctions.fsx" />
         <None Include="01Basics\01WorkingWithFunctions\Recursion.fsx" />
         <None Include="01Basics\01WorkingWithFunctions\PatternMatchingBasics.fsx" />
