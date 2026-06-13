@@ -19,6 +19,8 @@
         <None Include="01Basics\02ImmutableDataStructures\SetsAndMaps.fsx" />
         <None Include="01Basics\02ImmutableDataStructures\DiscriminatedUnions.fsx" />
         <None Include="01Basics\03ImperativeProgramming\MutableData.fsx" />
+        <None Include="01Basics\03ImperativeProgramming\ControlFlow.fsx" />
+        <None Include="01Basics\03ImperativeProgramming\Arrays.fsx" />
     </ItemGroup>
 
 </Project>
