@@ -28,7 +28,7 @@ let main1() =
     printfn "--------"
     printMessage false
     //Console.ReadKey(true) |> ignore
- 
+
 main1()
 
 
@@ -37,20 +37,20 @@ main1()
 let alwaysTrue() =
     printfn "Always true"
     true
-    
+
 let alwaysFalse() =
     printfn "Always false"
     false
 
 let main2() =
-    let testCases = 
+    let testCases =
         ["alwaysTrue && alwaysFalse", fun() -> alwaysTrue() && alwaysFalse();
          "alwaysFalse && alwaysTrue", fun() -> alwaysFalse() && alwaysTrue();
          "alwaysTrue || alwaysFalse", fun() -> alwaysTrue() || alwaysFalse();
          "alwaysFalse || alwaysTrue", fun() -> alwaysFalse() || alwaysTrue();]
-    
+
     testCases |> List.iter (fun (msg, res) ->
-        printfn "%s: %b" msg (res())
+        printfn $"%s{msg}: %b{res()}"
         printfn "-------")
 
 
@@ -111,8 +111,8 @@ let shoppingList =
     "Tempeh", 3, 2.69;
     "Rice milk", 1, 2.95;]
 
-for (food, quantity, price) in shoppingList do
-    printfn $"foord: {food}, quantity: {quantity}, price: %g{price}"
+for food, quantity, price in shoppingList do
+    printfn $"food: {food}, quantity: {quantity}, price: %g{price}"
 
 
 // while Loops
@@ -121,7 +121,7 @@ while expr do
 ... // loop body
 *)
 
-open System
+//open System
 
 let main5() =
     let password = "monkey"
@@ -136,7 +136,7 @@ let main5() =
     if password = guess then
         Console.WriteLine("You got the password right!")
     else
-        Console.WriteLine("You didn't get the passord")
+        Console.WriteLine("You didn't get the password")
 
 
 main5()

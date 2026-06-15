@@ -45,7 +45,7 @@ type switchstate' =
 let toggle' = function
     | On  -> Off
     | Off -> On
-    | Adjustable(brightness) ->
+    | Adjustable brightness ->
         // Matches any swtichstate' of type Adjustable.  Binds
         // the value passed into the constructor to the variable
         // 'brightness'. Toggles dimness around the halfway point.
@@ -58,7 +58,7 @@ let toggle' = function
 let main2() =
     let x = On
     let y = Off
-    let z = Adjustable(0.25)
+    let z = Adjustable 0.25
 
     printfn $"x: %A{x}"
     printfn $"y: %A{y}"
@@ -94,7 +94,7 @@ let simpleTree =
 let rec countLeaves = function
     | Leaf _  -> 1
     | Node(tree1, tree2) ->
-        (countLeaves tree1) + (countLeaves tree2)
+        countLeaves tree1 + countLeaves tree2
 
 
 let main3() =
@@ -148,7 +148,7 @@ let prettyPrint tree =
     let rec loop depth tree =
         let spacer = new string(' ', depth)
         match tree with
-        | Leaf(value) ->
+        | Leaf value ->
             printfn $"%s{spacer} |- %A{value}"
         | Node(tree1, tree2) ->
             printfn $"%s{spacer} |"
@@ -190,9 +190,9 @@ type proposition =
 
 let rec eval = function
     | True -> true
-    | Not prop -> not (eval(prop))
-    | And (prop1, prop2) -> eval(prop1) && eval(prop2)
-    | Or (prop1, prop2) -> eval(prop1) || eval(prop2)
+    | Not prop -> not (eval prop)
+    | And (prop1, prop2) -> eval prop1 && eval prop2
+    | Or (prop1, prop2) -> eval prop1 || eval prop2
 
 
 let prop1 =
