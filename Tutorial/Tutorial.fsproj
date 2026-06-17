@@ -21,6 +21,7 @@
         <None Include="01Basics\03ImperativeProgramming\MutableData.fsx" />
         <None Include="01Basics\03ImperativeProgramming\ControlFlow.fsx" />
         <None Include="01Basics\03ImperativeProgramming\Arrays.fsx" />
+        <None Include="01Basics\03ImperativeProgramming\MutableDatastructures.fsx" />
     </ItemGroup>
 
 </Project>
