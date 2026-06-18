@@ -23,6 +23,8 @@
         <None Include="01Basics\03ImperativeProgramming\Arrays.fsx" />
         <None Include="01Basics\03ImperativeProgramming\MutableDatastructures.fsx" />
         <None Include="01Basics\03ImperativeProgramming\BasicIO.fsx" />
+        <None Include="01Basics\03ImperativeProgramming\ExceptionHandling.fsx" />
+        <Folder Include="01Basics\04ObjectOrientedProgramming\" />
     </ItemGroup>
 
 </Project>
