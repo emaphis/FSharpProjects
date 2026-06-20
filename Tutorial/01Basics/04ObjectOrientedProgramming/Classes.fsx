@@ -153,6 +153,8 @@ type Line = class
     val Y2: float
 
     new (x1, y1, x2, y2) as this =
+        { X1 = x1; Y1 = y1;
+          X2 = x2; Y2 = y2;}
         then
             printfn $"Line constructor: {{(%F{this.X1}, %F{this.Y1}), (%F{this.X2}, %F{this.Y2})}}, Line.Length: %F{this.Length}"
 
@@ -163,6 +165,7 @@ end
 
 
 let line = Line(1.0, 1.0, 4.0, 2.5)
+// Line constructor: {(1.000000, 1.000000), (4.000000, 2.500000)}, Line.Length: 3.354102
 
 
 // Example Using Two Constructors
@@ -216,3 +219,252 @@ main4()
 
 
 // Differences Between Implicit and Explicit Syntaxes
+
+// The class body acts as a constructor
+type Car1(make : string, model : string) = class
+    // x.Make and x.Model are property getters
+    // (explained later in this chapter)
+    // Notice how they can access the
+    // constructor parameters directly
+    member x.Make = make
+    member x.Model = model
+
+    // This is an extra constructor.
+    // It calls the primary constructor
+    new () = Car1("default make", "default model")
+end
+
+type Car2 = class
+    // In this case, we need to declare
+    // all fields and their types explicitly
+    val private make : string
+    val private model : string
+
+    // Notice how field access differs
+    // from parameter access
+    member x.Make = x.make
+    member x.Model = x.model
+
+    // Two constructors
+    new (make : string, model : string) = {
+        make = make
+        model = model
+    }
+    new () = {
+        make = "default make"
+        model = "default model"
+    }
+end
+
+
+// Class Inference
+
+// Class Inference
+type Car3(make: string, model: string) =
+    member x.Make = make
+    member x.Model = model
+
+
+// Class Explicit
+type Car4(make: string, model: string) = class
+    member x.Make = make
+    member x.Model = model
+end
+
+
+// Class Members
+
+// Instance and Static Members
+
+type SomeClass1(prop: int) =
+    member x.Prop = prop
+    static member SomeStaticMethod = "This is a static method"
+
+// Called from class
+let str1 = SomeClass1.SomeStaticMethod
+
+let instance1 = SomeClass1 5
+
+// Called from instansnce
+let int1 = instance1.Prop
+
+
+// We can invoke instance methods from objects passed into static methods,
+
+type SomeClass2(prop: int) =
+    member x.Prop = prop
+    static member SomeStaticMethod = "This is a static method"
+    static member Copy (source: SomeClass2) = SomeClass2 source.Prop
+
+let instance2 = SomeClass2 10
+
+let shallowCopy = instance2
+let deepCopy = SomeClass2.Copy instance2
+
+//open System
+
+Object.ReferenceEquals(instance2, shallowCopy)
+Object.ReferenceEquals(instance2, deepCopy)
+
+
+// Getters and Setters
+
+(*
+member alias.PropertyName
+        with get() = some-value
+        and set(value) = some-assignment
+*)
+
+
+type IntWrapper1() =
+    let mutable num = 0
+
+    member x.Num
+        with get() = num
+        and set value = num <- value
+
+let wrapper1 = IntWrapper1()
+
+let num1 = wrapper1.Num
+wrapper1.Num <- 20
+
+let num2 = wrapper1.Num
+
+// Since getters and setters are methods, they can be used for processing data
+
+type IntWrapper2() =
+    let mutable num = 0
+
+    member x.Num
+        with get() = num
+        and set value =
+            if value > 10 || value < 0 then
+                raise (Exception "Values must be between 0 and 10")
+            else
+                num <- value
+
+
+let wrapper2 = IntWrapper2()
+
+wrapper2.Num <- 5
+
+let num3 = wrapper2.Num
+
+//wrapper2.Num <- 20
+//System.Exception: Values must be between 0 and 10
+
+
+// Adding Members to Records and Unions
+
+// Record example:
+
+type Line2 =
+   { X1: float; Y1: float;
+     X2: float; Y2: float }
+   with
+       member x.Length =
+           let sqr x = x * x
+           sqrt(sqr(x.X1 - x.X2) + sqr(x.Y1 - x.Y2))
+
+        member x.ShiftH amount =
+            { x with X1 = x.X1 + amount; X2 = x.X2 + amount }
+
+        member x.ShiftV amount =
+            { x with Y1 = x.Y1 + amount; Y2 = x.Y2 + amount }
+
+
+let line2 = { X1 = 1.0; Y1 = 2.0; X2 = 5.0; Y2 = 4.5 }
+
+let len1 =  line2.Length
+let line3 = line2.ShiftH 10.0
+let line4 = line2.ShiftV -5.0
+
+
+// Discriminated Union example
+
+type shape =
+    | Circle of float
+    | Rectangle of float * float
+    | Triangle of float * float
+    with
+        member x.Area =
+            match x with
+            | Circle r -> Math.PI * r * r
+            | Rectangle(b, h) -> b * h
+            | Triangle(b, h) -> b * h / 2.0
+
+        member x.Scale value =
+            match x with
+            | Circle r -> Circle(r + value)
+            | Rectangle(b, h) -> Rectangle(b + value, h + value)
+            | Triangle(b, h) -> Triangle(b + value, h + value)
+
+
+let mycircle = Circle 5.0
+
+let ar1 = mycircle.Area
+let cr1 = mycircle.Scale 7.0
+
+
+// Generic classes
+
+type 'a GenericWrapper1(initialValue: 'a) =
+    let mutable internalVal = initialValue
+
+    member x.Value
+        with get() = internalVal
+        and set value = internalVal <- value
+
+
+let intWrapper = GenericWrapper1<_> 5
+
+let int2 = intWrapper.Value
+
+intWrapper.Value <- 20
+
+let int3 = intWrapper.Value
+
+//intWrapper.Value <- 2.0
+
+
+// Pattern Matching Objects
+
+(*
+match arg with
+| :? type1 -> expr
+| :? type2 -> expr
+*)
+
+type Cat() =
+    member x.Meow() = printfn "Meow"
+
+type Person(name: string) =
+    member x.Name = name
+    member x.SayHello() = printfn $"Hi, I'm %s{x.Name}"
+
+type Monkey() =
+    member x.SwingFromTrees() = printfn "swinging from trees"
+
+let handlesAnything(o: obj) =
+    match o with
+    | null  -> printfn "<null>"
+    | :? Cat as cat -> cat.Meow()
+    | :? Person as person -> person.SayHello()
+    | _ -> printfn $"I don't recognize type'{o.GetType().Name}'"
+
+
+let main5() =
+    let cat = Cat()
+    let bob = Person "Bob"
+    let bill = Person "Bill"
+    let phrase = "Hello world!"
+    let monkey = Monkey()
+
+    handlesAnything cat
+    handlesAnything bob
+    handlesAnything bill
+    handlesAnything phrase
+    handlesAnything monkey
+    handlesAnything null
+
+main5()
