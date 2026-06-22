@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
@@ -26,6 +26,8 @@
         <None Include="01Basics\03ImperativeProgramming\ExceptionHandling.fsx" />
         <None Include="01Basics\04ObjectOrientedProgramming\OperatorOverloading.fsx" />
         <None Include="01Basics\04ObjectOrientedProgramming\Classes.fsx" />
+        <None Include="01Basics\04ObjectOrientedProgramming\Inheritance.fsx" />
+        <None Include="01Basics\04ObjectOrientedProgramming\Interfaces.fsx" />
     </ItemGroup>
 
 </Project>
