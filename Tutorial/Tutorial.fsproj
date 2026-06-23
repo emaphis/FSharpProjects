@@ -28,6 +28,7 @@
         <None Include="01Basics\04ObjectOrientedProgramming\Classes.fsx" />
         <None Include="01Basics\04ObjectOrientedProgramming\Inheritance.fsx" />
         <None Include="01Basics\04ObjectOrientedProgramming\Interfaces.fsx" />
+        <None Include="01Basics\04ObjectOrientedProgramming\Events.fsx" />
     </ItemGroup>
 
 </Project>
