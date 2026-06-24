@@ -1,4 +1,4 @@
-# FuctionalProgrammingFSharp
+# FunctionalProgrammingFSharp
 
 Repository of code for practicing F#
 
@@ -20,8 +20,18 @@ Directory:  ./Essentials
 
 Directory: ./FSAction
 
-## 
+## ./FSDataStructures/
 
 by Adnan Masood, Ph.D.
 
 Directory: FSDataStructures
+
+## ./Tutorial/
+
+Review of the F# Wikibook
+
+<https://en.wikibooks.org/wiki/F_Sharp_Programming>
+
+## ./modules
+
+Various projects reviewing the Wikibook's coverage of F# modules and namspaces

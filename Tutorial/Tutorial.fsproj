@@ -29,6 +29,8 @@
         <None Include="01Basics\04ObjectOrientedProgramming\Inheritance.fsx" />
         <None Include="01Basics\04ObjectOrientedProgramming\Interfaces.fsx" />
         <None Include="01Basics\04ObjectOrientedProgramming\Events.fsx" />
+        <None Include="01Basics\04ObjectOrientedProgramming\Modules.fsx" />
+        <None Include="02Advanced\01Advanced\UnitsOfMeasure.fsx" />
     </ItemGroup>
 
 </Project>
