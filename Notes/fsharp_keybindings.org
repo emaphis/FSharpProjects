@@ -1,0 +1,30 @@
+* Key bindings
+
+** ts-fsharp-mode
+
+*** Base mode
+
+C-c C-a    Switch between .fs and .fsi
+
+C-c C-z     to send code to the REPL for interactive exploration
+
+C-c C-c     Run compilation
+
+C-c C-d    Look up symbol in .NET docs
+
+C-c C-f     Format the buffer with Fantomas
+
+C-c >       indent region by one level
+
+C-c C-d b   to build
+
+C-c C-d t   to run tests
+
+
+*** Documentation lookup¶
+
+sharp-ts-mode-doc-at-point	Look up symbol at point in .NET API docs
+
+fsharp-ts-mode-browse-fsharp-docs	Open the F# documentation home page
+
+fsharp-ts-mode-search-by-signature	Search FSDN by type signature (e.g., string -> int)

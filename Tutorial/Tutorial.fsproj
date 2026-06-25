@@ -6,7 +6,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="Program.fs" />
         <None Include="patternmatching.fsx" />
         <None Include="01Basics\01WorkingWithFunctions\DeclaringValuesAndFunctions.fsx" />
         <None Include="01Basics\01WorkingWithFunctions\PatternMatchingBasics.fsx" />
@@ -31,6 +30,8 @@
         <None Include="01Basics\04ObjectOrientedProgramming\Events.fsx" />
         <None Include="01Basics\04ObjectOrientedProgramming\Modules.fsx" />
         <None Include="02Advanced\01Advanced\UnitsOfMeasure.fsx" />
+        <None Include="02Advanced\01Advanced\ActivePatterns.fsx" />
+        <Compile Include="Program.fs" />
     </ItemGroup>
 
 </Project>
