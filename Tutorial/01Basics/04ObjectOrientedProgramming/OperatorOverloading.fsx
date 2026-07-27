@@ -1,4 +1,4 @@
-﻿// Object Oriented Programming
+﻿// Object-Oriented Programming
 // Operator Overloading
 
 // Using Operators
@@ -26,7 +26,7 @@ let third = first + second
 // Defining New Operators
 
 // ! % & * + - . / <=> ? @ ^ | ~
-// infix oporators and prefix operators
+// infix operators and prefix operators
 
 (*
 let (op) arg1 arg2 = ...

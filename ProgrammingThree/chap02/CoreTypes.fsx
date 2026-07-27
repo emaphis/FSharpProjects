@@ -17,7 +17,7 @@ let fun1 = fun x -> x + 1
 //val fun1: x: int -> int
 
 // tuple type
-let tpl1 = ("eggs", "ham")
+let tpl1 = "eggs", "ham"
 //val tpl1: string * string = ("eggs", "ham")
 
 // list type
@@ -26,13 +26,12 @@ let lst1 = [ 1; 2; 3 ]
 
 
 // option tuple
-let opt1 = Some(3)
+let opt1 = Some 3
 //val opt1: int option = Some 3
 
 
-
 // Unit
-// A value signifying noting
+// A value signifying nothing
 
 let xu = ()
 //val xu: unit = ()
@@ -55,17 +54,17 @@ ignore (square 4)
 let dinner = "green eggs", "ham"
 //val dinner: string * string = ("green eggs", "ham")
 
-let dinner' = ("green eggs",  "ham")
+let dinner' = "green eggs",  "ham"
 //val dinner': string * string = ("green eggs", "ham")
 
-let zeros = (0, 0L, 0I, 0.0)
+let zeros = 0, 0L, 0I, 0.0
 //al zeros: int * int64 * System.Numerics.BigInteger * float = (0, 0L, 0, 0.0)
 
-let nested'6 = (1, (2.0, 3M), (4L, "5"))
+let nested'6 = 1, (2.0, 3M), (4L, "5")
 //val nested'6: int * (float * decimal) * (int64 * string) =(1, (2.0, 3M), (4L, "5"))
 
 // Extract values using 'fst' 'snd'
-let nameTuple = ("John", "Smith")
+let nameTuple = "John", "Smith"
 //val nameTuple: string * string = ("John", "Smith")
 
 let first = fst nameTuple
@@ -75,7 +74,7 @@ let last = snd nameTuple
 //val last: string = "Smith"
 
 // decomposition with pattern matching
-let snacks =  ("Soda", "Cookies", "Candy")
+let snacks =  "Soda", "Cookies", "Candy"
 
 let x, y, z = snacks
 //val z: string = "Candy"
@@ -195,7 +194,7 @@ let primesUnder50 = primesUnder 50
 //  List module functions
 
 // Using List.partition
-let isMultipleOf5 x = (x % 5 = 0)
+let isMultipleOf5 x = x % 5 = 0
 
 let list5 = [ 1 .. 15 ]
 
@@ -244,12 +243,12 @@ let countVowels (str: string) =
     let charList = List.ofSeq str
 
     let accFunct (As, Es, Is, Os, Us) letter =
-        if   letter = 'a' then (As + 1, Es, Is, Os, Us)
-        elif letter = 'e' then (As, Es + 1, Is, Os, Us)
-        elif letter = 'i' then (As, Es, Is + 1, Os, Us)
-        elif letter = 'o' then (As, Es, Is, Os + 1, Us)
-        elif letter = 'u' then (As, Es, Is, Os, Us + 1)
-        else                   (As, Es, Is, Os, Us)
+        if   letter = 'a' then As + 1, Es, Is, Os, Us
+        elif letter = 'e' then As, Es + 1, Is, Os, Us
+        elif letter = 'i' then As, Es, Is + 1, Os, Us
+        elif letter = 'o' then As, Es, Is, Os + 1, Us
+        elif letter = 'u' then As, Es, Is, Os, Us + 1
+        else                   As, Es, Is, Os, Us
 
     List.fold accFunct (0, 0, 0, 0, 0) charList
 
@@ -287,7 +286,7 @@ open System
 /// If the parsing is successful, the function will return Some(result);
 /// otherwise it will return None.
 let isInteger (str : string) =
-    let successful, result = Int32.TryParse(str)
+    let successful, result = Int32.TryParse str
     if successful then Some result
     else None
 
@@ -298,7 +297,7 @@ let num = isInteger "400"
 
 
 // Using Option.get
-let isLessThanZero x = (x < 0)
+let isLessThanZero x = x < 0
 
 let containsNegativeNumbers intList =
     let filteredList = List.filter isLessThanZero intList

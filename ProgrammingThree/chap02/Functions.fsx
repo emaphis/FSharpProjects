@@ -35,7 +35,8 @@ let add' (x: float) y = x + y
 //val add': x: float -> y: float -> float
 
 let add4 = add' 1.0 2.0
-//al add': x: float -> y: float -> float
+//val add': x: float -> y: float -> float
+//val add4: float = 3.0
 
 
 // Generic Functions

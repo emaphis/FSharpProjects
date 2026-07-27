@@ -32,7 +32,7 @@ let to_fahrenheit (x : float<C>) = x * (9.0<F>/5.0<C>) + 32.0<F>
 let to_celsius (x : float<F>) = (x - 32.0<F>) * (5.0<C>/9.0<F>)
 
 
-// UOM are statically checked an compile time
+// UOM are statically checked at compile time
 
 let calcSpeed (x: float<m>) (y: float<s>) = x / y
 
@@ -91,7 +91,7 @@ let avDens = average densities
 // functions and classes.
 
 //type triple<'a> = { a : float<'a>; b : float<'a>; c : float<'a>}
-//F# Compiler 702 xpected unit-of-measure parameter, not type parameter. Explicit
+//F# Compiler 702 expected unit-of-measure parameter, not type parameter. Explicit
 // unit-of-measure parameters must be marked with the [<Measure>] attribute.
 
 // but

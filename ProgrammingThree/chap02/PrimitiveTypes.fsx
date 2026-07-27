@@ -1,6 +1,6 @@
 // Primitive Types
 
-let x = 1
+let x = 1.0
 //val x: int = 1
 
 
@@ -109,7 +109,7 @@ val zettabyte: System.Numerics.BigInteger = 1180591620717411303424
 let and1 = 0b1111 &&& 0b0011
 // val and1: int = 3 - 0b0011
 
-// Of
+// Or
 let or1 = 0xFF00 ||| 0x00FF
 // val or1: int = 65535 - 0xFFFF
 
@@ -194,6 +194,8 @@ let printTruthTable  f =
     printfn ""
     ()
 //val printTruthTable: f: (bool -> bool -> bool) -> unit
+
+printfn ""
 
 printTruthTable (&&)
 //       |true   | false |

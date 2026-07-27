@@ -17,7 +17,7 @@ module Seq =
 let isPalindrome (input : string) =
     input
     |> Seq.take (input.Length / 2)
-    |> Seq.foralli (fun i x -> x = input.[input.Length - i - 1]);;
+    |> Seq.foralli (fun i x -> x = input[input.Length - i - 1]);;
 
 
 let bool1 = isPalindrome "hello"
@@ -30,7 +30,7 @@ module StringExtensions =
         member this.IsPalindrome =
             this
             |> Seq.take (this.Length / 2)
-            |> Seq.foralli (fun i x -> this.[this.Length - i - 1] = x)
+            |> Seq.foralli (fun i x -> this[this.Length - i - 1] = x)
 
         static member Reverse(s : string) =
             let chars : char array =
@@ -39,10 +39,11 @@ module StringExtensions =
                 s
                 |> Seq.take charsToTake
                 |> Seq.iteri (fun i x ->
-                    temp.[i] <- s.[temp.Length - i - 1]
-                    temp.[temp.Length - i - 1] <- x)
+                    temp[i] <- s[temp.Length - i - 1]
+                    temp[temp.Length - i - 1] <- x)
                 temp
-            new System.String(chars)
+
+            System.String(chars)
 
 open StringExtensions
 

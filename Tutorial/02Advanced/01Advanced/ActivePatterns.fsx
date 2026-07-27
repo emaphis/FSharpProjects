@@ -130,9 +130,9 @@ let (|RegexContains|_|) pattern input =
     else None
 
 let testString3 = function
-    | RegexContains "http://\S+" urls -> printfn "Got urls: %A" urls
-    | RegexContains "[^@]@[^.]+\.\W+" emails -> printfn "Got email address: %A" emails
-    | RegexContains "\d+" numbers -> printfn "Got numbers: %A" numbers
+    | RegexContains "https://\S+" urls -> printfn $"Got urls: %A{urls}"
+    | RegexContains "[^@]@[^.]+\.\W+" emails -> printfn $"Got email address: %A{emails}"
+    | RegexContains "\d+" numbers -> printfn $"Got numbers: %A{numbers}"
     | _ -> printfn "Didn't find anything."
 
 

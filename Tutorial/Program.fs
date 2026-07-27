@@ -2,4 +2,4 @@
 printfn "Hello from F#"
 printfn "The very next line"
 
-// <| |> ->> <- www  /// $$ **  -- << >> >= <= => fun
+// <| |> ||> <|| := --> ->> <- www  /// /* */ {| |} $$ **  --  != << >> >= <= => fun

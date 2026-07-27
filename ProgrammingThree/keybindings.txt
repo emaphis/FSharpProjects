@@ -1,0 +1,21 @@
+C-c C-z   neocaml-repl-switch-to-repl
+C-c C-c   neocaml-repl-send-definition
+C-c C-r   neocaml-repl-send-region
+C-C C-b   neocaml-repl-send-buffe
+C-c C-l   neocaml-repl-load-file
+C-c C-p   neocaml-repl-send-phrase
+C-c C-n	  neocaml-repl-send-phrase-and-step
+C-c C-i	  neocaml-repl-interrupt
+C-c C-k	  neocaml-repl-clear-buffer
+
+ELISP> 
+;;; Code:
+
+:bind
+(("C-c C-z" . #'fsharp-repl-switch-to-repl)
+ ("C-c C-c" . #'fsharp-repl-send-definition)
+ ("C-c C-n" . fsharp-repl-send-definition-and-step)
+ ("C-c C-r" . #'fsharp-repl-send-region)
+ ("C-c C-b" . #'fsharp-repl-send-buffer)
+ ("C-c C-p" . #'fsharp-repl-send-phrase)
+ ("C-c C-n" . #'fsharp-repl-send-phrase-and-step))
