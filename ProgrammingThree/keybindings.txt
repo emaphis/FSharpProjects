@@ -8,8 +8,6 @@ C-c C-n	  neocaml-repl-send-phrase-and-step
 C-c C-i	  neocaml-repl-interrupt
 C-c C-k	  neocaml-repl-clear-buffer
 
-ELISP> 
-;;; Code:
 
 :bind
 (("C-c C-z" . #'fsharp-repl-switch-to-repl)
