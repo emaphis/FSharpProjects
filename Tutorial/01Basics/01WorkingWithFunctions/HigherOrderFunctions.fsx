@@ -9,7 +9,7 @@ open System
 let square x = x * x
 //square: x: int -> int
 
-let cube x = x * (square x)
+let cube x = x * square x
 //cube: x: int -> int
 
 let sign x =
@@ -18,7 +18,7 @@ let sign x =
     else "zero"
 //sign: x: int -> string
 
-let passFive f = (f 5)
+let passFive f = f 5
 // f: (int -> 'a) -> 'a
 
 printfn $"%A{passFive square}"
@@ -37,7 +37,7 @@ let map x f = f x
 //val map: x: 'a -> f: ('a -> 'b) -> 'b
 
 let cubeAndConvertToString x =
-    let temp= (square x) * x
+    let temp= square x * x
     temp.ToString()
 //cubeAndConvertToString: x: int -> string
 
@@ -105,7 +105,7 @@ let complexFunctionAnon =
     2                            (* 2 *)
     |> ( fun x -> x * x)         (* 2 * 2 = 4 *)
     |> ( fun x -> x + 5)         (* 4 + 5 = 9 *)
-    |> ( fun x -> x.ToString() ) (* 9.ToString = "9" *)
+    |> fun x -> x.ToString() (* 9.ToString = "9" *)
 
 
 // A Timer Function
@@ -151,7 +151,7 @@ Console.WriteLine(addFive 12)
 
 // How Currying Works
 
-let add' = (fun x -> (fun y -> x + y))
+let add' = fun x -> fun y -> x + y
 //val add': x: int -> y: int -> int
 
 let add6 = add' 6
@@ -178,9 +178,9 @@ let getPrice2 = function
 
 // Shortcut syntax is converted to
 let getPrice3 =
-    (fun x ->
+    fun x ->
         match x with
         | "banana" -> 0.79
         | "watermelon" -> 3.49
         | "tofu" -> 1.09
-        | _ -> nan)
+        | _ -> nan
