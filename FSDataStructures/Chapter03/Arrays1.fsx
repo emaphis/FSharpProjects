@@ -32,7 +32,7 @@ Array.init
 // val it: (int -> (int -> 'a) -> 'a array)
 
 // Array of cubes
-let arrayOfCubes = (Array.init 10 (fun idx -> idx * idx))
+let arrayOfCubes = Array.init 10 (fun idx -> idx * idx)
 // val arrayOfCubes: int array = [|0; 1; 4; 9; 16; 25; 36; 49; 64; 81|]
 
 let senators : string[] = Array.zeroCreate 100
@@ -40,7 +40,7 @@ let houseReps : string[] = Array.zeroCreate 435
 let originalColonies = Array.zeroCreate<string> 13
 
 let imdbtop10 = [|
-    "The Shawshank Redemption (1994)"; 
+    "The Shawshank Redemption (1994)";
     "The Godfather (1972)";
     "The Godfather: Part II (1974)";
     "Il buono, il brutto, il cattivo. (1966)";
@@ -56,6 +56,3 @@ let topThree = imdbtop10[1..3]
 let topFive = imdbtop10[..5]
 let bottomFive = imdbtop10[5..]
 let list1 = imdbtop10[0..]
-
-
-
