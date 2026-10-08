@@ -35,3 +35,7 @@ Review of the F# Wikibook
 ## ./modules
 
 Various projects reviewing the Wikibook's coverage of F# modules and namspaces
+
+## ./Examples
+
+Various examples from: <https://www.tutorialspoint.com/fsharp/index.htm>
