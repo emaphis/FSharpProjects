@@ -11,6 +11,12 @@ printfn $"y: %i{y}"
 printfn $"z: %i{z}"
 
 
+(* Won't compile, F# vars are immutable by default *)
+//let x = 10
+//let y = 20
+//let z = x + y
+
+
 (* Variable Definition With Type Declaration *)
 let l: int32 = 10
 let m: int32 = 20
