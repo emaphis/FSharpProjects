@@ -18,13 +18,13 @@ type Complex(x: float, y: float) =
     // overloading the + operator
     static member (+) (a: Complex, b: Complex) =
         Complex(a.x + b.x, a.y + b.y)
-    
+
     //overloading - operator
     static member (-) (a : Complex, b: Complex) =
       Complex(a.x - b.x, a.y - b.y)
-    
+
     // overriding the ToString method
-    override this.ToString (): string = 
+    override this.ToString (): string =
             this.x.ToString() + ", " + this.y.ToString()
 
 

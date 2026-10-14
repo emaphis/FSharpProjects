@@ -2,12 +2,12 @@
 
 (* Declaring Delegates
 
-type delgate-typename = delgate of type -> type
+type delegate-typename = delegate of type -> type
 
 *)
 
 
-// Delegate1 works with tuple arguement
+// Delegate1 works with tuple argument
 type DelegateA = delegate of (int * int) -> int
 
 // Delegate2 works with curried arguments.
@@ -26,10 +26,10 @@ type MyClass() =
     member x.Sub(a: int) (b: int) =
         a - b
 
-// Delegate1 works with tuple arguements.
+// Delegate1 works with tuple arguments.
 type Delegate1 = delegate of (int * int) -> int
 
-// Delegate2 works wtih curried arguemtns
+// Delegate2 works with curried arguments
 type Delegate2 = delegate of int * int -> int
 
 let InvokeDelegate1 (dlg: Delegate1) (a: int) (b: int) =
@@ -39,15 +39,15 @@ let InvokeDelegate2 (dlg: Delegate2) (a: int) (b: int) =
 
 // For static methods, use the class name, the dot operator, and the
 // name of the static method.
-let del1 : Delegate1 = new Delegate1( MyClass.add )
-let del2 : Delegate2 = new Delegate2( MyClass.sub )
+let del1 : Delegate1 = Delegate1( MyClass.add )
+let del2 : Delegate2 = Delegate2( MyClass.sub )
 let mc = MyClass()
 
 // For instance methods, use the instance value name, the dot operator,
 // and the instance method name.
 
-let del3 : Delegate1 = new Delegate1( mc.Add )
-let del4 : Delegate2 = new Delegate2( mc.Sub )
+let del3 : Delegate1 = Delegate1( mc.Add )
+let del4 : Delegate2 = Delegate2( mc.Sub )
 
 for a, b in [ 400, 200; 100, 45 ] do
     let c1 = InvokeDelegate1 del1 a b

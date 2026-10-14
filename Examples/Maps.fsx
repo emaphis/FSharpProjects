@@ -10,7 +10,7 @@ let students =
       Add("Robin Sahoo", "1503").
       Add("Gillian Megan", "1504");;
 
-printfn "Map - students: %A" students
+printfn $"Map - students: %A{students}"
 
 
 (* Convert a list to Map *)
@@ -22,12 +22,13 @@ let capitals =
       "Switzerland", "Bern" ]
    |> Map.ofList;;
 
-printfn "Map capitals : %A" capitals
+printfn $"Map capitals : %A{capitals}"
 
 
-printfn "Map - students: %A" students
+printfn $"Map - students: %A{students}"
+
 (*Accessing an element using key *)
-printfn "%A" students.["Zara Ali"]
+printfn "%A" students["Zara Ali"]
 
 
 (* Basic Operations on Maps*)
@@ -45,11 +46,11 @@ let students2 =
       Add("Novonil Sarker", "1506").
       Add("Joan Paul", "1507")
 
-printfn "Map - students: %A" students2
-printfn "Map - number of students: %d" students2.Count
+printfn $"Map - students: %A{students2}"
+printfn $"Map - number of students: %d{students2.Count}"
 
 (* finding the registration number of a student*)
 let found = students.TryFind "Rishita Gupta"
 match found with
-| Some x -> printfn "Found %s." x
+| Some x -> printfn $"Found %s{x}."
 | None -> printfn "Did not find the specified value."

@@ -67,7 +67,7 @@ printfn $"""%g{getRate "carrot"}"""
 
 (* Adding Filters or Guards to Patterns
 
-You can add filters, or guards, to patterns using the when keyword.
+You can add filters, or guards, to patterns using the `when` keyword.
 *)
 
 (* Example 1 *)

@@ -6,7 +6,7 @@
 (*
 Using list literals.
 
-Using cons (::) operator.
+Using cons ( :: ) operator.
 
 Using the List.init method of List module.
 

@@ -11,7 +11,7 @@ printFunc 10.0 20.0
 
 
 let printFunction (x: 'a) (y: 'a) =
-   printfn "2: %A %A" x y
+   printfn $"2: %A{x} %A{y}"
 
 printFunction 10.0 20.0
 
@@ -22,7 +22,7 @@ type genericClass (x: 'a) =
     do printfn $"%A{x}"
 
 
-let gr = new genericClass "zara"
+let gr = genericClass "zara"
 let gs = genericClass( seq { for i: int in 1 .. 10 -> i, i*i }  )
 
 // "zara"

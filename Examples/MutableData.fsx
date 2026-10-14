@@ -61,7 +61,7 @@ let registerStudents (students : studentData list) =
       Threading.Thread.Sleep 1000)
 
 let printData (students: studentData list) =
-   students |> List.iter (fun x -> printfn "%A" x)
+   students |> List.iter (fun x -> printfn $"%A{x}")
 
 let main() =
    let students = List.init 3 getStudent
