@@ -3,7 +3,7 @@
 // A basic array can be declared as follows:
 let Philosophers = [| "Aquinas" ; "Alfarabi"; "Avicenna"; "Averroes"; "Maimonides"|]
 
-// The individual elements of an array can be accessed with a
+// The individual elements of an array can be accessed with an
 // x[index] suffix given as follows:
 let phi2 = Philosophers[2]
 //val phi2: string = "Avicenna"
@@ -22,6 +22,7 @@ let CountTo100 = [| 1 .. 100 |]
 let countTo1000by100 = [| 1 .. 100 .. 1000|]
 //  [|1; 101; 201; 301; 401; 501; 601; 701; 801; 901|]
 
+// Negative middle value provides a countdown.
 let reversedCount100 = [| 100 .. -1 .. 1|]
 
 
@@ -36,7 +37,9 @@ let array1 : int array = Array.zeroCreate count
 Array.create
 // val it: (int -> 'a -> 'a array)
 
-let sixSixers =  Array.create 6 6
+let count2 = 6
+let value = 6
+let sixSixers =  Array.create count2 value
 // val sixSixers: int array = [|6; 6; 6; 6; 6; 6|]
 
 let zeroToSixty = [| 0.0 .. 4.5 .. 60.0 |]
@@ -71,6 +74,7 @@ let imdbtop10 = [|
     "The Dark Knight (2008)"
 |]
 
+// retrieve values
 let topThree = imdbtop10[1..3]
 let topFive = imdbtop10[..5]
 let bottomFive = imdbtop10[5..]
@@ -79,3 +83,6 @@ let list1 = imdbtop10[0..]
 let wolfenstein3D = Array3D.zeroCreate<float> 11 11 11
 
 wolfenstein3D[0, 0, 0] <- 1.1
+
+for cord in wolfenstein3D do
+    printfn $"%A{cord}"

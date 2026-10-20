@@ -18,11 +18,11 @@ let yodaQuote = yodaQuotesFragment2 @ yodaQuotesFragment3
 // Some of the list type operations can be seen in the
 // following table:
 
-yodaQuote.IsEmpty
-yodaQuote.Length
-yodaQuote.Head
-yodaQuote.Tail
-yodaQuote.Item (1)
+yodaQuote.IsEmpty  // false
+yodaQuote.Length   // 6
+yodaQuote.Head     // "You"
+yodaQuote.Tail     // [" Must "; " Unlearn "; " What "; " You "; "learned"]
+yodaQuote.Item(1)  // " Must "
 
 //  The zip operation takes two collections and combines them into tuples as follows:
 let FirstNames = ["Walter "; "Skyler"; "Jesse"; "Hank"; "Saul" ]
@@ -34,8 +34,7 @@ let BreakingBadCast = List.zip FirstNames LastNames
 //   ("Hank", "Schrader"); ("Saul", "Goodman")]
 
 // A list can be iterated as follows:
-List.iter (fun x -> printfn "%s" x) FirstNames
-
+List.iter (fun x -> printfn $"%s{x}") FirstNames
 
 
 // List comprehensions
@@ -48,5 +47,5 @@ List.iter (fun x -> printfn "%s" x) FirstNames
 [ 'A' .. 'Z' ]
 
 [ for x in 1 .. 10 do
-        yield (x * x * x) ]
+    yield (x * x * x) ]
 // val it: int list = [1; 8; 27; 64; 125; 216; 343; 512; 729; 1000]

@@ -1,23 +1,25 @@
-// Tuples
+// Tuples and records
 
 let hodgepodge =
     ("xkcd", 3.142, System.Math.PI, 0xFFFFFF,"the oatmeal")
 
-let morehodgepodge =
+let moreHodgepodge =
     (System.Math.PI * System.Math.E, "Path not found.  Try the grass shortcut",("Hello","World"), printfn "I come first!")
 // (8.539734223, "Path not found.  Try the grass shortcut", ("Hello", "World"),   ())
 
 let circumference (x:float, y:float, z:float) =
     (2.0 * System.Math.PI * x, 2.0 * System.Math.PI * y, 2.0 * System.Math.PI * z)
+// val circumference: x: float * y: float * z: float -> float * float * float
 
 let cir1 = circumference (10.0, 20.0, 35.0)
 //val cir1: float * float * float = (62.83185307, 125.6637061, 219.9114858)
+
 
 // A record is a named field tuple.
 type MacOSRelease =
     { Title: string;
       Version : string }
-    
+
 let beta = {Title="Kodiak"; Version="Beta"}
 let v10_0 = {Title="Cheetah"; Version="10.0"}
 let V10_1  = {Title="Puma"; Version="10.1"};;

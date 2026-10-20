@@ -8,8 +8,12 @@ let countToTen = seq { 1 .. 10 }
 countToTen
 //val it: int seq = seq [1; 2; 3; 4; ...]
 
+let len1 = countToTen |> Seq.length
+// val len1: int = 10
+
 let alphabets = seq { 'a'..'z' }
+
 alphabets |> Seq.exists (fun c -> c = 'x')
 // val it: bool = true
 
-let nationalDebt = seq { 1I .. 18000000000000I }
+//let nationalDebt = seq { 1I .. 18000000000000I }

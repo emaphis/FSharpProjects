@@ -12,7 +12,8 @@ let rec quickSort = function
                quickSort lessThan @ n :: quickSort greaterEqual
 
 let result2 = quickSort data
-let bool1 = result = result
+let bool1 = result = result2
+
 
 // Functional Quicksort - Lazy and incremental.
 let rec quickSort_func (pxs:seq<_>) =
@@ -56,15 +57,15 @@ let bubbleSort array =
         if swaps > 0 then loop array else array
     loop array
 
-let arr = [| 5.0; 4.0; 8.0; 20.0; 1.0 |]
+let arr = [| 5; 4; 8; 20; 1 |]
 
 bubbleSort arr
-// val it: float array = [|1.0; 4.0; 5.0; 8.0; 20.0|]
+// val it: int array = [|1; 4; 5; 8; 20|]
 
 let result4 = bubbleSort (List.toArray data)
 let bool3 = result = (Array.toList result4)
 
-
+/// Get the highest value of the list
 let rec getHighest list =
     match list with
     | head1 :: head2 :: tail when head1 > head2 -> getHighest (head1 :: tail)
@@ -110,11 +111,14 @@ let rec mergeSort list =
     | []  -> []
     | [x] -> [x]
     | _   ->
-        let (lst1, lst2) = split list
+        let lst1, lst2 = split list
         merge (mergeSort lst1) (mergeSort lst2)
 
 let result6 = mergeSort data
 let bool5 = result = result6
 
 let testData = List.init 10000 (fun _ -> rand.Next())
+
+#time
 let result7 = mergeSort testData
+#time
