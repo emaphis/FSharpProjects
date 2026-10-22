@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Stack/Stack.fsproj" />
+  </Folder>
+  <Project Path="tests/Stack.Tests/Stack.Tests.fsproj" />
+</Solution>
