@@ -2,7 +2,6 @@
 
 // Pattern matching
 
-open System.Collections
 
 let PickProgrammingParadigm (x: int) =
     match x with
@@ -29,7 +28,7 @@ let MatchArray arr =
     | [| |] -> "An Empty Array"
     | [| x |] -> $"Single Value: %A{x}"
     | [| x; y |] -> sprintf $"A Pair: %A{x} and %A{y}"
-    | _ -> sprintf ">2 Array"
+    | _ -> ">2 Array"
 
 MatchArray [| 1; 2; 3|]
 
@@ -95,3 +94,23 @@ lock
 //val it: ('a -> (unit -> 'b) -> 'b) when 'a: not struct
 
 
+// Algorithm – parenthesis matching using stacks
+
+//(8 + 3) * (6 + 9) / (1 -  1)
+
+let BalanceExpression expr =
+    let rec loop xs stack =
+        match xs, stack with
+        | [], [] -> true
+        | [], _ -> false
+        | '(' :: ys, stack -> loop ys ('(' :: stack)
+        | ')' :: ys, '(' :: stack -> loop ys stack
+        | ')' :: _, _ -> false
+        | _ :: ys, stack -> loop ys stack
+    loop (Seq.toList expr) []
+
+BalanceExpression "(())"
+
+BalanceExpression "(((( )))"
+
+BalanceExpression "(8 + 3) * (6 + 9) / (1 -  1)"
