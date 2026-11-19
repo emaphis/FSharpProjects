@@ -1,10 +1,12 @@
-dotnet new slnx
-dotnet new console -lang F# -o src/Stack
-dotnet slnx add src/Stack/Stack.fsproj
-dotnet new nunit -lang F# -o tests/Stack.Tests
-dotnet sln add tests/StackTests/StackTests.fsproj
-cd tests/StackTests
-dotnet add reference ../../src/Stack/Stack.fsproj
+dotnet new console -lang F# -o src/xxx
+dotnet sln add src/xxx/xxx.fsproj
+dotnet new xunit -lang F# -o tests/xxxTests
+dotnet sln add tests/xxxTests/xxxTests.fsproj
+cd tests/xxxTests
+dotnet add reference ../../src/xxx/xxx.fsproj
+dotnet add package Xunit
+dotnet add package FsUnit.XUnit
+dotnet add package Swensen.Unquote
 dotnet build
 dotnet test
-cd ../..
+

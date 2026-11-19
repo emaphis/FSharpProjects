@@ -4,15 +4,15 @@ Repository of code for practicing F#
 
 ## Essential FSharp by Ian Russel
 
-<https://github.com/ijrussell/essential-fsharp>
+[https://github.com/ijrussell/essential-fsharp](https://github.com/ijrussell/essential-fsharp)
 
 ./Essential
 
 ## Essentials also by Ian Russel
 
-Website: <https://amplifyingfsharp.io/fsharp-essentials/>
+Website: [https://amplifyingfsharp.io/fsharp-essentials/](https://amplifyingfsharp.io/fsharp-essentials/)
 
-Playlist: <https://www.youtube.com/playlist?list=PL1r7XrpHzfvy4w3GYSBtK0RzNUvP4jRlw>
+Playlist: [https://www.youtube.com/playlist?list=PL1r7XrpHzfvy4w3GYSBtK0RzNUvP4jRlw](https://www.youtube.com/playlist?list=PL1r7XrpHzfvy4w3GYSBtK0RzNUvP4jRlw)
 
 Directory:  ./Essentials
 
@@ -30,7 +30,7 @@ Directory: FSDataStructures
 
 Review of the F# Wikibook
 
-<https://en.wikibooks.org/wiki/F_Sharp_Programming>
+[https://en.wikibooks.org/wiki/F\_Sharp\_Programming](https://en.wikibooks.org/wiki/F_Sharp_Programming)
 
 ## ./modules
 
@@ -38,4 +38,19 @@ Various projects reviewing the Wikibook's coverage of F# modules and namspaces
 
 ## ./Examples
 
-Various examples from: <https://www.tutorialspoint.com/fsharp/index.htm>
+Various examples from: [https://www.tutorialspoint.com/fsharp/index.htm](https://www.tutorialspoint.com/fsharp/index.htm)
+
+
+
+\# Regular expression practice
+
+
+
+.\\RegularExpressions
+
+
+
+<https://zetcode.com/fsharp/regex/>
+
+
+
