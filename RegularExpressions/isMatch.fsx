@@ -1,4 +1,7 @@
 // F# isMatch
+// Basic pattern matching tests whether text contains a specific pattern
+// without extracting matched content. IsMatch returns boolean results
+// for validation and filtering operations.
 
 open System.Text.RegularExpressions
 

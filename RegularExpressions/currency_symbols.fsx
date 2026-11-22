@@ -1,5 +1,8 @@
 // F# regex currency symbols
-// he \p{Sc} regular expression can be used to look for currency symbols.
+// Unicode property classes match specific character categories like
+// currency symbols across different languages and writing systems.
+// Property classes provide international text processing capabilities.
+// The \p{Sc} regular expression can be used to look for currency symbols.
 
 open System
 open System.Text.RegularExpressions

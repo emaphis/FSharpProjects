@@ -1,5 +1,7 @@
 // F# regex alternations
 // The alternation operator | enables to create a regular expression with several choices.
+// This enables flexible matching against predefined
+// sets of acceptable values.
 
 open System.Text.RegularExpressions
 
